@@ -1,0 +1,17 @@
+{
+  "Name": "AIND custom roles",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Spektra udacity Custom Role.",
+  "Actions": [
+    "Microsoft.ClassicStorage/disks/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Network/*",
+    "Microsoft.Resources/deployments/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Storage/storageAccounts/*"
+  ],
+  "NotActions": [
+
+  ]
+}
