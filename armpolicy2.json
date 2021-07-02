@@ -1,0 +1,47 @@
+{
+        "if": {
+           "anyOf": [
+          {
+           "not": {
+             "anyOf": [
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Compute/disks/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Compute/virtualMachines/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Compute/virtualMachines/extensions/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Network/networkInterfaces/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Network/networkSecurityGroups/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Network/publicIPAddresses/*"
+                 },
+                         {
+                 "field": "type",
+                 "like": "Microsoft.Network/virtualNetworks/*"
+                 },
+                        {
+                 "field": "type",
+                 "like": "Microsoft.Storage/storageAccounts/*"
+                 }
+                     ]
+           }
+          }
+         ]
+       },
+       "then": {
+         "effect": "deny"
+       }
+      }
