@@ -1,0 +1,35 @@
+ODL------------
+we must check radio buttons for
+*Allow Personal Email Addresses?
+*Enable Hot Instances
+*Enable Resource Operations 
+* Test 
+*ACI Deployment Style=default
+*owner email
+*subscription group
+*retake count=how much u want
+*expiry date
+*duration
+*aproval=registration required
+*status=registration open
+*tags
+*description
+*template
+*name
+TEMPLATE---------------
+*Name
+*cloud resource type=cloud resource usage
+*code
+*subscription=shared
+*description
+*owner email
+*deployment plan=single resource group
+*usage policy=
+*github master document=
+*enable lab validation
+*enable custom rg
+*enable vm access over http
+*delete once deployment got sucessed
+*arm template and parameter file
+* contrubutor over template permisiion
+*vm configurarion-rdp,name of dns,user name,password in ouputs of arm templatr
