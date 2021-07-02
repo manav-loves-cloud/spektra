@@ -279,7 +279,7 @@
         "autoUpgradeMinorVersion":true,
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/AdarshRazor/User_Friendly_ARM_Temlates/main/windows_scripts/installchrome.ps1"
+            "https://raw.githubusercontent.com/bhavangowdan/spektra/main/onbording/sample/installchrome.ps1"
           ],
           "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installchrome.ps1"
         }
