@@ -1,0 +1,19 @@
+[{"ResourceType" : "Microsoft.Compute/virtualMachines", 
+"Parameter" : [
+{"Name" : "max-cpu-cores", "Value" : "10"}
+]},
+{"ResourceType" : "Microsoft.DocumentDb/databaseAccounts", 
+"Parameter" : [
+{"Name" : "max-RU", "Value" : "1000"}
+]},
+{"ResourceType" : "Microsoft.Sql/servers/databases", 
+"Parameter" : [
+{"Name" : "max-DW", "Value" : "500"},
+{"Name" : "max-DTU", "Value" : "10"},
+{"Name" : "max-VCores", "Value" : "10"}
+]},
+{"ResourceType" : "Microsoft.Compute/virtualMachineScaleSets", 
+"Parameter" : [
+{"Name" : "max-vss-cpu-cores", "Value" : "10"}
+]}
+]
