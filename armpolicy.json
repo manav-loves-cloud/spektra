@@ -1,5 +1,4 @@
-{
-        "if": {
+       "if": {
            "anyOf": [
           {
            "not": {
@@ -12,26 +11,10 @@
                  "field": "type",
                  "like": "Microsoft.Compute/virtualMachines/*"
                  },
-                         {
+                                                {
                  "field": "type",
-                 "like": "Microsoft.Compute/virtualMachines/extensions/*"
-                 },
-                         {
-                 "field": "type",
-                 "like": "Microsoft.Network/networkInterfaces/*"
-                 },
-                         {
-                 "field": "type",
-                 "like": "Microsoft.Network/networkSecurityGroups/*"
-                 },
-                         {
-                 "field": "type",
-                 "like": "Microsoft.Network/publicIPAddresses/*"
-                 },
-                         {
-                 "field": "type",
-                 "like": "Microsoft.Network/virtualNetworks/*"
-                 },
+                 "like": "Microsoft.Network/*"
+                         },
                         {
                  "field": "type",
                  "like": "Microsoft.Storage/storageAccounts/*"
