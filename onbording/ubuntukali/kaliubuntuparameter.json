@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "kaliadminUsername": {
+      "value": "kali"
+    },
+    "kaliadminPassword": {
+      "value": "kali"
+    },
+    "ubuntuadminUsername": {
+      "value": "ubuntu"
+    },
+    "ubuntuadminPassword": {
+      "value": "ubuntu"
+    },
+    "DeploymentID": {
+      "value": "12345"
+    }
+  }
+}
