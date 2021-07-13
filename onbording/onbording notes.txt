@@ -1,1 +1,0 @@
-*google---microsoft resource provider operations---for get all the rback things for the compute
