@@ -173,7 +173,7 @@
             "diskSizeGB": 127
           },
           "imageReference": {
-            "id": "/subscriptions/510b94ba-e453-4417-988b-fbdc37b55ca7/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/galleries/Sharedimagegallery/images/cybernd0205"
+            "id": "/subscriptions/510b94ba-e453-4417-988b-fbdc37b55ca7/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/galleries/Sharedimagegallery/images/CYBERND0203-image/versions/1.0.0"
           }
         },
 
