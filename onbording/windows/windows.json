@@ -37,7 +37,7 @@
       "publicIpAddressType": "Dynamic",
       "labvmDnsName": "[concat('cyberadmin',uniqueString(resourceGroup().id))]",
       "labvmNetworkInterfaceName": "cyberadmin-nic",
-      "virtualMachineName": "[concat('cyberadmin-',parameters('DeploymentID'))]",
+      "virtualMachineName": "CYBERND0204",
       "virtualMachineSize": "Standard_DS1_v2"
     },
     "resources": [
