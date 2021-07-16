@@ -37,7 +37,7 @@
       "publicIpAddressType": "Dynamic",
       "labvmDnsName": "[concat('cyberadmin',uniqueString(resourceGroup().id))]",
       "labvmNetworkInterfaceName": "cyberadmin-nic",
-      "virtualMachineName": "CYBERND0204",
+      "virtualMachineName": "CYBERND0202",
       "virtualMachineSize": "Standard_DS1_v2"
     },
     "resources": [
@@ -171,7 +171,7 @@
               "diskSizeGB": 127
             },
             "imageReference": {
-              "id": "/subscriptions/510b94ba-e453-4417-988b-fbdc37b55ca7/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/galleries/Sharedimagegallery/images/CYBERND0202-img/versions/1.0.0"
+              "id": "/subscriptions/510b94ba-e453-4417-988b-fbdc37b55ca7/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/galleries/Sharedimagegallery/images/CYBERND0202-image/versions/1.0.0"
             }
           },
           "networkProfile": {
