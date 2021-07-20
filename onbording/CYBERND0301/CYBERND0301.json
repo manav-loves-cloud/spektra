@@ -1,0 +1,202 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminUsername": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the Azure Databricks workspace to create."
+        }
+      },
+      "adminPassword": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the Azure Databricks workspace to create."
+        }
+      },
+
+      "DeploymentID": {
+        "type": "string"
+      },
+  
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      }
+    },
+    "variables": {
+      "networkSecurityGroupName": "cyberadmin-nsg",
+      "virtualNetworkName": "cyberadmin-vnet",
+      "addressPrefix": "10.0.0.0/24",
+      "subnetPrefix": "10.0.0.0/24",
+      "subnetName": "cyberadmin-subnet",
+      "publicIpAddressName": "cyberadmin-pip",
+      "publicIpAddressType": "Dynamic",
+      "labvmDnsName": "[concat('cyberadmin',uniqueString(resourceGroup().id))]",
+      "labvmNetworkInterfaceName": "cyberadmin-nic",
+      "virtualMachineName": "CYBERND0201",
+      "virtualMachineSize": "Standard_DS1_v2"
+    },
+    "resources": [
+      {
+        "apiVersion": "2016-09-01",
+        "name": "pid-e843308b-3ce2-42a2-b743-2f21b36a5e68",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "Incremental",
+          "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+          }
+        }
+      },
+      {
+        "name": "[variables('networkSecurityGroupName')]",
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "apiVersion": "2017-06-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "securityRules": [
+            {
+              "name": "default-allow-rdp",
+              "properties": {
+                "priority": 1030,
+                "protocol": "TCP",
+                "access": "Allow",
+                "direction": "Inbound",
+                "sourceAddressPrefix": "*",
+                "sourcePortRange": "*",
+                "destinationAddressPrefix": "*",
+                "destinationPortRange": "3389"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "[variables('virtualNetworkName')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2017-08-01",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+          "[concat('Microsoft.Network/networkSecurityGroups/',variables('networkSecurityGroupName'))]"
+        ],
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[variables('addressPrefix')]"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[variables('subnetName')]",
+              "properties": {
+                "addressPrefix": "[variables('subnetPrefix')]"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "[variables('publicIpAddressName')]",
+        "type": "Microsoft.Network/publicIpAddresses",
+        "apiVersion": "2017-08-01",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "Basic"
+        },
+        "properties": {
+          "publicIpAllocationMethod": "[variables('publicIpAddressType')]",
+          "dnsSettings": {
+            "domainNameLabel": "[variables('labvmDnsName')]"
+          }
+        }
+      },
+  
+      {
+        "name": "[variables('labvmNetworkInterfaceName')]",
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2016-09-01",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+          "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+          "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
+        ],
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('virtualNetworkName'), variables('subnetName'))]"
+                },
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIpAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                }
+              }
+            }
+          ],
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+          }
+        }
+      },
+      {
+        "name": "[variables('virtualMachineName')]",
+        "type": "Microsoft.Compute/virtualMachines",
+        "apiVersion": "2018-06-01",
+        "location": "[resourceGroup().location]",
+  
+        "dependsOn": [
+          "[concat('Microsoft.Network/networkInterfaces/', variables('labvmNetworkInterfaceName'))]"
+        ],
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[variables('virtualMachineSize')]"
+          },
+  
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "FromImage",
+              "name": "[concat(variables('virtualMachineName'), '-osdisk')]",
+              "caching": "ReadWrite",
+              "managedDisk": {
+                "storageAccountType": "Standard_LRS"
+              },
+              "diskSizeGB": 127
+            },
+            "imageReference": {
+              "id": "/subscriptions/510b94ba-e453-4417-988b-fbdc37b55ca7/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/galleries/Sharedimagegallery/images/CYBERND0201-image1/versions/2.0.0"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('labvmNetworkInterfaceName'))]"
+              }
+            ]
+          }
+        }
+      }
+  
+    ],
+    "outputs": {
+      "windowsVmDNSName": {
+        "type": "string",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]"
+      },
+      "cyberadminUsername": {
+        "type": "string",
+        "value": "[parameters('adminUsername')]"
+      },
+      "cyberadminPassword": {
+        "type": "string",
+        "value": "[parameters('adminPassword')]"
+      }
+    }
+  }
