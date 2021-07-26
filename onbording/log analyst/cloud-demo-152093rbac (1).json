@@ -19,6 +19,7 @@
                      "Microsoft.OperationalInsights/workspaces/*",
                     "Microsoft.Storage/*",
                     "Microsoft.Web/serverFarms/*",
+                    "Microsoft.ContainerService/managedClusters/*",
                     "Microsoft.Web/sites/*"
                 ],
     "NotActions":  [
