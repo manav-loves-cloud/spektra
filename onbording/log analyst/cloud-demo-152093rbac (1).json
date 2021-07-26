@@ -16,6 +16,7 @@
                     "Microsoft.Network/virtualNetworks/*",
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
+                     "Microsoft.OperationalInsights/workspaces",
                     "Microsoft.Storage/storageAccounts/*",
                     "Microsoft.Web/serverFarms/*",
                     "Microsoft.Web/sites/*"
