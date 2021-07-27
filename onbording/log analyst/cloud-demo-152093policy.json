@@ -54,7 +54,7 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Storage/storageAccounts/*"
+				    "like": "Microsoft.Storage/*"
 				    },
                     {
 				    "field": "type",
