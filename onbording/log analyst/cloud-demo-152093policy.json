@@ -58,12 +58,9 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Storage/*"
+				    "like": "Microsoft.Storage/storageAccounts/*"
 				    },
-				   {
-				    "field": "type",
-				    "like": "Microsoft.Storage/register/action/*"
-				    },
+				   
                     {
 				    "field": "type",
 				    "like": "Microsoft.Web/serverFarms/*"
@@ -74,7 +71,7 @@
 				    },
                     {
 				    "field": "type",
-				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Authorization/policyDefinitions","Microsoft.Network/routeTables","Microsoft.Storage/register", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Authorization/policyDefinitions","Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts/*", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
 				    }
                 ]
 			}
@@ -88,7 +85,7 @@
 			{
 			  "not": {
 				"field": "Microsoft.Compute/virtualMachineScaleSets/Sku.Name",
-				"in": ["Standard_B1ls"]
+				"in": ["Standard_DS2_v2"]
 				}
 			  }
 			]
