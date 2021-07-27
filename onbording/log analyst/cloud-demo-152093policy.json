@@ -22,7 +22,7 @@
 				    },
 				  {
 				    "field": "type",
-				    "like": "Microsoft.Storage/register/*"
+				    "like": "Microsoft.Storage/register/action/*"
 				    },
                     {
 				    "field": "type",
