@@ -28,10 +28,7 @@
 				    "field": "type",
 				    "like": "Microsoft.OperationsManagement/solutions/*"
 				    },
-				  {
-				    "field": "type",
-				    "like": "Microsoft.ContainerService/managedClusters/*"
-				    },
+				  
                     {
 				    "field": "type",
 				    "like": "microsoft.insights/actiongroups/*"
