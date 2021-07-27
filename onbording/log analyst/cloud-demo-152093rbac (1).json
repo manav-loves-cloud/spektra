@@ -18,7 +18,6 @@
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                      "Microsoft.OperationalInsights/workspaces/*",
                     "Microsoft.Storage/storageAccounts/*",
-                    "Microsoft.Authorization/policyDefinitions/*",
                     "Microsoft.Web/serverFarms/*",
                     "Microsoft.ContainerService/managedClusters/*",
                     "Microsoft.Network/routeTables/*",
