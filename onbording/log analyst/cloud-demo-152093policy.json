@@ -28,6 +28,10 @@
 				    "field": "type",
 				    "like": "Microsoft.OperationsManagement/solutions/*"
 				    },
+				  {
+				    "field": "type",
+				    "like": "Microsoft.ContainerService/managedClusters/*"
+				    },
                     {
 				    "field": "type",
 				    "like": "microsoft.insights/actiongroups/*"
@@ -76,7 +80,7 @@
 				    },
                     {
 				    "field": "type",
-				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.OperationsManagement/solutions","Microsoft.Storage/register","Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts/*", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.ContainerService/managedClusters","Microsoft.OperationsManagement/solutions","Microsoft.Storage/register","Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts/*", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
 				    }
                 ]
 			}
