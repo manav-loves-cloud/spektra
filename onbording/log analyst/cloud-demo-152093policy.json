@@ -32,10 +32,7 @@
 				    "field": "type",
 				    "like": "Microsoft.OperationalInsights/workspaces/*"
 				    },
-				   {
-				    "field": "type",
-				    "like": "Microsoft.Authorization/policyDefinitions/*"
-				    },
+				   
                     {
 				    "field": "type",
 				    "like": "Microsoft.Network/loadBalancers/*"
@@ -71,7 +68,7 @@
 				    },
                     {
 				    "field": "type",
-				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Authorization/policyDefinitions","Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts/*", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
+				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups","Microsoft.ContainerService/managedClusters", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts/*", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.OperationalInsights/workspaces"]
 				    }
                 ]
 			}
