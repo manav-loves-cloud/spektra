@@ -23,7 +23,8 @@
                     "Microsoft.ContainerService/managedClusters/*",
                     "Microsoft.Network/routeTables/*",
                     "Microsoft.Web/sites/*",
-                    "Microsoft.OperationsManagement/solutions/*"
+                    "Microsoft.OperationsManagement/solutions/*",
+                     "Microsoft.ContainerService/managedClusters/*"
                 ],
     "NotActions":  [
 
