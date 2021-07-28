@@ -34,7 +34,7 @@
       "Microsoft.OperationalInsights/*",
       "Microsoft.OperationsManagement/solutions/*",
       "Microsoft.Resources/deployments/*",
-      "Microsoft.Resources/subscriptions/resourceGroups/read",
+      "Microsoft.Resources/subscriptions/resourceGroups/*",
       "Microsoft.ServiceBus/namespaces/*",
       "Microsoft.Sql/*",
       "Microsoft.Sql/servers/databases/*",
