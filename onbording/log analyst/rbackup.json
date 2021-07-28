@@ -14,7 +14,7 @@
       "Microsoft.Compute/virtualMachines/*",
       "Microsoft.Compute/virtualMachineScaleSets/*",
       "Microsoft.ContainerRegistry/registries/*",
-      "Microsoft.ContainerService/managedClusters/*",
+      "Microsoft.ContainerService/*",
       "Microsoft.DBforPostgreSQL/servers/*",
       "Microsoft.DevTestLab/schedules/*",
       "Microsoft.DocumentDb/databaseAccounts/*",
