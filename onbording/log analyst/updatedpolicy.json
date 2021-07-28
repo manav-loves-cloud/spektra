@@ -96,7 +96,7 @@
 			  },
 			  {
 				"field": "type",
-				"like": "Microsoft.OperationalInsights/workspaces/*"
+				"like": "Microsoft.OperationalInsights/*"
 			  },
 			  {
 				"field": "type",
@@ -140,7 +140,7 @@
 				    },
 			  {
 				"field": "type",
-				"in": [ "Microsoft.ContainerInstance","Microsoft.OperationsManagement","Microsoft.Storage/register","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/disks", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService", "Microsoft.ContainerService/managedClusters", "Microsoft.DBforPostgreSQL", "Microsoft.DocumentDb/databaseAccounts", "Microsoft.EventGrid/topics", "Microsoft.EventHub", "microsoft.insights/actiongroups", "microsoft.insights/components", "Microsoft.Logic/workflows", "Microsoft.Network/networkInterfaces", "Microsoft.Network/loadBalancers", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql", "Microsoft.Sql/servers", "Microsoft.Storage", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.Web" ]
+				"in": [ "Microsoft.ContainerInstance","Microsoft.OperationsManagement","Microsoft.Storage/register","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/disks", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService", "Microsoft.ContainerService/managedClusters", "Microsoft.DBforPostgreSQL", "Microsoft.DocumentDb/databaseAccounts", "Microsoft.EventGrid/topics", "Microsoft.EventHub", "microsoft.insights/actiongroups", "microsoft.insights/components", "Microsoft.Logic/workflows", "Microsoft.Network/networkInterfaces", "Microsoft.Network/loadBalancers", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql", "Microsoft.Sql/servers", "Microsoft.Storage", "Microsoft.Web/serverFarms", "Microsoft.Web/sites","Microsoft.Web" ]
 			  }
 			]
 		  }
