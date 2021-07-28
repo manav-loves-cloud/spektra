@@ -31,7 +31,7 @@
       "Microsoft.Network/networkSecurityGroups/*",
       "Microsoft.Network/publicIPAddresses/*",
       "Microsoft.Network/virtualNetworks/*",
-      "Microsoft.OperationalInsights/workspaces/*",
+      "Microsoft.OperationalInsights/*",
       "Microsoft.OperationsManagement/solutions/*",
       "Microsoft.Resources/deployments/*",
       "Microsoft.Resources/subscriptions/resourceGroups/read",
