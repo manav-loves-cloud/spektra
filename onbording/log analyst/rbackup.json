@@ -44,7 +44,8 @@
       "Microsoft.Web/serverFarms/*",
       "Microsoft.Web/sites/*",
       "Microsoft.Network/routeTables/*",
-      "Microsoft.Storage/register/action/*"
+      "Microsoft.Storage/register/action/*",
+        "Microsoft.ContainerService/managedClusters/*"
     ],
     "NotActions": [
   
