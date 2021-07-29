@@ -28,6 +28,10 @@
                    "field": "type",
                    "like": "Microsoft.Web/staticSites/*"
                    },
+                 {
+                   "field": "type",
+                   "like": "Microsoft.Features/providers/features/register/*"
+                   },
                   
                    {
                    "field": "type",
