@@ -12,6 +12,8 @@
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                     "Microsoft.Storage/storageAccounts/*",
+        "Microsoft.Insights/components/*",
+        "Microsoft.KeyVault/vaults/*",
                      "Microsoft.Features/providers/features/register/*"
                 ],
     "NotActions":  [
