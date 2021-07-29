@@ -1,0 +1,51 @@
+{
+    "if": {
+       "anyOf": [
+        {
+           "not": {
+             "anyOf": [
+                   {
+                   "field": "type",
+                   "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+                   },
+                   {
+                   "field": "type",
+                   "like": "Microsoft.CognitiveServices/accounts/ComputerVision/*"
+                   },
+                   {
+                   "field": "type",
+                   "like": "Microsoft.CognitiveServices/accounts/Face/*"
+                   },
+                   {
+                   "field": "type",
+                   "like": "Microsoft.CognitiveServices/accounts/FormRecognizer/*"
+                   },
+                   {
+                   "field": "type",
+                   "like": "Microsoft.MachineLearningServices/workspaces/*"
+                   },
+                   {
+                   "field": "type",
+                   "like": "Microsoft.Web/staticSites/*"
+                   },
+                  
+                   {
+                   "field": "type",
+                   "like": "Microsoft.Storage/storageAccounts/*"
+                   },
+
+                   {
+                   "field": "type",
+                   "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
+                   }
+               ]
+           }
+        }
+
+
+     ]
+   },
+   "then": {
+     "effect": "deny"
+   }
+}
