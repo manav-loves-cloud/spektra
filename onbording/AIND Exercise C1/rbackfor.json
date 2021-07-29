@@ -6,9 +6,7 @@
     "Actions":  [
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
                     "Microsoft.Authorization/*/read",
-                    "Microsoft.CognitiveServices/accounts/ComputerVision/*",
-                    "Microsoft.CognitiveServices/accounts/Face/*",
-                    "Microsoft.CognitiveServices/accounts/FormRecognizer/*",
+                    "Microsoft.CognitiveServices/accounts/*",
                     "Microsoft.MachineLearningServices/workspaces/*",
                     "Microsoft.Web/staticSites/*",
                     "Microsoft.Resources/deployments/*",
