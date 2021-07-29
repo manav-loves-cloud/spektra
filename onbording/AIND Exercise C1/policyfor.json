@@ -30,6 +30,14 @@
                    },
                  {
                    "field": "type",
+                   "like": "Microsoft.Insights/components/*"
+                   },
+                 {
+                   "field": "type",
+                   "like": "Microsoft.KeyVault/vaults/*"
+                   },
+                 {
+                   "field": "type",
                    "like": "Microsoft.Features/providers/features/register/*"
                    },
                   
@@ -40,7 +48,7 @@
 
                    {
                    "field": "type",
-                   "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Features/providers", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
+                   "in": ["Microsoft.Insights/components","Microsoft.KeyVault/vaults","microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Features/providers", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
                    }
                ]
            }
