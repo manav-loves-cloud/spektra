@@ -45,10 +45,15 @@
                    "field": "type",
                    "like": "Microsoft.Storage/storageAccounts/*"
                    },
+                 {
+                   "field": "type",
+                   "like": "microsoft.web/sites/*"
+                   },
+
 
                    {
                    "field": "type",
-                   "in": ["Microsoft.Insights/components","Microsoft.KeyVault/vaults","microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Features/providers", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
+                   "in": ["microsoft.web/sites","Microsoft.Insights/components","Microsoft.KeyVault/vaults","microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Features/providers", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
                    }
                ]
            }
