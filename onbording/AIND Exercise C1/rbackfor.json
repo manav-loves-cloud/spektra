@@ -14,6 +14,7 @@
                     "Microsoft.Storage/storageAccounts/*",
         "Microsoft.Insights/components/*",
         "Microsoft.KeyVault/vaults/*",
+        "microsoft.web/sites/*",
                      "Microsoft.Features/providers/features/register/*"
                 ],
     "NotActions":  [
