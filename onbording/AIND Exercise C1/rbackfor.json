@@ -11,7 +11,8 @@
                     "Microsoft.Web/staticSites/*",
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
-                    "Microsoft.Storage/storageAccounts/*"
+                    "Microsoft.Storage/storageAccounts/*",
+                     "Microsoft.Features/providers/features/register/*"
                 ],
     "NotActions":  [
 
