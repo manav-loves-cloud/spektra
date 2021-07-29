@@ -40,7 +40,7 @@
 
                    {
                    "field": "type",
-                   "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
+                   "in": ["microsoft.alertsmanagement/smartDetectorAlertRules","Microsoft.Features/providers", "Microsoft.CognitiveServices/accounts", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Web/staticSites", "Microsoft.Storage/storageAccounts"]
                    }
                ]
            }
