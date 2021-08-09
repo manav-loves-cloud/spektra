@@ -1,0 +1,15 @@
+[ {
+    "Name": "M04-Az700",
+    "Language": "English",
+    "BaseURL": "https://github.com/MicrosoftLearning/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions",
+    "Files": [
+       {
+          "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions/master/Instructions/Exercises/M04-Unit%204%20Create%20and%20configure%20an%20Azure%20load%20balancer.md",
+          "Order": 1
+       },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions/master/Instructions/Exercises/M04-Unit%206%20Create%20a%20Traffic%20Manager%20profile%20using%20the%20Azure%20portal.md",
+        "Order": 2
+      }
+    ]
+  } ]
