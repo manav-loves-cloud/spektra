@@ -1,0 +1,68 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.DocumentDB/databaseAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "microsoft.insights/actiongroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Insights/components/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/loadBalancers/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/networkSecurityGroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/publicIPAddresses/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/virtualNetworks/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Web/serverFarms/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Web/sites/*"
+				    },
+                    {
+                        "field": "type",
+                        "like": "Microsoft.Network/trafficManagerProfiles/*"
+                        },
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Network/trafficManagerProfiles","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    }
+                ]
+			}
+		 }
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
