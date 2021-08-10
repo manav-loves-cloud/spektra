@@ -37,14 +37,10 @@
                         "field": "type",
                         "like": "Microsoft.Network/trafficManagerProfiles/*"
                         },
-				  
-				    {
-                        "field": "type",
-                        "like": "Microsoft.Resources/deployments/*"
-                        },
+	
                     {
 				    "field": "type",
-				    "in": ["Microsoft.Resources/deployments","Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    "in": ["Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
 				    }
                 ]
 			}
