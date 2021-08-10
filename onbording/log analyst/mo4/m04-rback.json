@@ -6,7 +6,7 @@
     "Actions":  [
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
                     "Microsoft.Authorization/*/read",
-                    "Microsoft.Compute/virtualMachineScaleSets/*",
+                    "Microsoft.Compute/virtualMachines/*",
                     "Microsoft.DocumentDB/databaseAccounts/*",
                     "microsoft.insights/actiongroups/*",
                     "Microsoft.Insights/components/*",
