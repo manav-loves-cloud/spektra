@@ -11,7 +11,7 @@
                     "Microsoft.Insights/components/*",
                     "Microsoft.Network/loadBalancers/*",
                     "Microsoft.Network/networkSecurityGroups/*",
-                    "Microsoft.Network/publicIPAddresses/*",
+                    "Microsoft.Network/*",
                     "Microsoft.Network/virtualNetworks/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                     "Microsoft.Storage/storageAccounts/*",
