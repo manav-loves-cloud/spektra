@@ -15,6 +15,7 @@
                     "Microsoft.Network/virtualNetworks/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                     "Microsoft.Storage/storageAccounts/*",
+                    "Microsoft.Resources/deployments/*",
                     "Microsoft.Web/serverFarms/*",
                     "Microsoft.Web/sites/*",
                     "Microsoft.Network/trafficManagerProfiles/*"
