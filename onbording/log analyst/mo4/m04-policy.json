@@ -19,7 +19,7 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Network/virtualNetworks/*"
+				    "like": "Microsoft.Network/*"
 				    },
                     {
 				    "field": "type",
