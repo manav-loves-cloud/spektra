@@ -5,7 +5,6 @@
     "Description":  "Spektra Training Custom Role.",
     "Actions":  [
                     "microsoft.alertsmanagement/smartDetectorAlertRules/*",
-                    "Microsoft.Authorization/*/read",
                     "Microsoft.Compute/virtualMachines/*",
                     "Microsoft.DocumentDB/databaseAccounts/*",
                     "microsoft.insights/actiongroups/*",
