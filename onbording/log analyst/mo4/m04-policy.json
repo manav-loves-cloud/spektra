@@ -4,22 +4,7 @@
 		 {
 			"not": {
 			  "anyOf": [
-                    {
-				    "field": "type",
-				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "Microsoft.DocumentDB/databaseAccounts/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "microsoft.insights/actiongroups/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "Microsoft.Insights/components/*"
-				    },
+
                     {
 				    "field": "type",
 				    "like": "Microsoft.Network/loadBalancers/*"
@@ -54,7 +39,7 @@
                         },
                     {
 				    "field": "type",
-				    "in": ["Microsoft.Network/trafficManagerProfiles","microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.DocumentDB/databaseAccounts", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    "in": ["Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
 				    }
                 ]
 			}
