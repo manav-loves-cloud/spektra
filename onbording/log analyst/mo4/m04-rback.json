@@ -18,7 +18,8 @@
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Web/serverFarms/*",
                     "Microsoft.Web/sites/*",
-                    "Microsoft.Network/trafficManagerProfiles/*"
+                    "Microsoft.Network/trafficManagerProfiles/*",
+                   "Microsoft.Network/bastionHosts/*"
                 
                 ],
     "NotActions":  [
