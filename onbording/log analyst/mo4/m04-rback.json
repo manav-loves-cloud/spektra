@@ -19,7 +19,8 @@
                     "Microsoft.Storage/storageAccounts/*",
                     "Microsoft.Web/serverFarms/*",
                     "Microsoft.Web/sites/*",
-                    "Microsoft.Network/trafficManagerProfiles/*"
+                    "Microsoft.Network/trafficManagerProfiles/*",
+                   "Microsoft.Resources/deployments/*"
                 ],
     "NotActions":  [
 
