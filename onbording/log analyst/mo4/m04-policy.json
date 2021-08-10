@@ -37,10 +37,18 @@
                         "field": "type",
                         "like": "Microsoft.Network/trafficManagerProfiles/*"
                         },
+				  {
+           "field": "type",
+           "like": "Microsoft.Compute/virtualMachines/*"
+           },
+                   {
+           "field": "type",
+           "like": "Microsoft.Compute/virtualMachines/extensions/*"
+           },
 	
                     {
 				    "field": "type",
-				    "in": ["Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    "in": ["Microsoft.Compute/virtualMachines","Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
 				    }
                 ]
 			}
