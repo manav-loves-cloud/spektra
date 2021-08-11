@@ -1,0 +1,30 @@
+Login-AzureRmAccount
+$RGs = "FabrikamOil-134559"
+foreach($RG in $RGs)
+{
+    $RGName = $RG
+	Write-Host "======================================================="
+	Write-Host "Resource Group Name :" $RGName
+	Write-Host "======================================================="
+	$resources = Get-AzureRmResource -oDataQuery "`$filter=resourcegroup eq '$RGName'"
+
+    # Create csv file
+    Add-Content -Path C:\GoldenSnapshots\$RGName.csv  -Value '"ResourceGroupName","ResourceName","ResourceType","SKUName","SKUTier","SKUSize","Region","ResourceId"' -Force
+
+    foreach($resource in $resources)
+    {
+        $resourceType = $resource.ResourceType
+        $skuName = $resource.SKu.name
+        $skuTier = $resource.SKu.tier
+        $skuSize = $null
+
+        if($resourceType -eq "Microsoft.Compute/virtualMachines")
+        {
+            $VM = Get-AzureRMVM –ResourceGroupName $RGName -Name $resource.ResourceName
+            $skuSize = $VM.HardwareProfile.Vmsize
+        }
+
+        [pscustomobject]@{ ResourceGroupName = $RGName; ResourceName = $resource.ResourceName; ResourceType = $resource.ResourceType; SKUName = $skuName; SKUTier = $skuTier; SKUSize = $skuSize; Region = $resource.Location; ResourceId = $resource.ResourceId } | 
+        Export-Csv -Path  C:\GoldenSnapshots\$RGName.csv -Append -NoTypeInformation -Force
+    }
+}
