@@ -1,0 +1,12 @@
+[
+  {
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "Parameter": [
+      {
+        "Name": "max-cpu-cores",
+        "Value": "10"
+      }
+    ]
+  }
+ 
+]
