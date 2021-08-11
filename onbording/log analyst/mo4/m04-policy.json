@@ -54,10 +54,14 @@
            "field": "type",
            "like": "Microsoft.Compute/virtualMachines/extensions/*"
            },
+				  {
+           "field": "type",
+           "like": "Microsoft.Compute/disks/*"
+           },
 	
                     {
 				    "field": "type",
-				    "in": ["Microsoft.Compute/virtualMachines","Microsoft.Resources/deployments","Microsoft.Compute/virtualMachines","Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    "in": ["Microsoft.Compute/disks","Microsoft.Compute/virtualMachines","Microsoft.Resources/deployments","Microsoft.Compute/virtualMachines","Microsoft.Network/trafficManagerProfiles","Microsoft.Network/loadBalancers", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
 				    }
                 ]
 			}
