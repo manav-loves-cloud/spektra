@@ -1,0 +1,11 @@
+[ {
+    "Name": "M01-Az204",
+    "Language": "English",
+    "BaseURL": "https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure",
+    "Files": [
+       {
+          "RawFilePath": "https://raw.githubusercontent.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure/master/Instructions/Labs/AZ-204_lab_01.md",
+          "Order": 1
+       }
+    ]
+  } ]
