@@ -26,7 +26,11 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Web/*"
+				    "like": "Microsoft.Web/sites/*"
+				    },
+				   {
+				    "field": "type",
+				    "like": "Microsoft.Web/sites/read"
 				    },
                     {
 				    "field": "type",
