@@ -22,7 +22,7 @@
 				    },
                     {
 				    "field": "type",
-				    "like": "Microsoft.Web/sites/*"
+				    "like": "Microsoft.Web/*"
 				    },
                     {
 				    "field": "type",
