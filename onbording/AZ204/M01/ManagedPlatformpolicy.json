@@ -8,6 +8,10 @@
 				    "field": "type",
 				    "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
 				    },
+				  {
+				    "field": "type",
+				    "like": "resourceGroups/ManagedPlatform/*"
+				    },
                     {
 				    "field": "type",
 				    "like": "microsoft.insights/components/*"
@@ -26,7 +30,7 @@
 				    },
                     {
 				    "field": "type",
-				    "in": ["microsoft.alertsmanagement/smartDetectorAlertRules", "microsoft.insights/components", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
+				    "in": ["resourceGroups/ManagedPlatform","microsoft.alertsmanagement/smartDetectorAlertRules", "microsoft.insights/components", "Microsoft.Storage/storageAccounts", "Microsoft.Web/serverFarms", "Microsoft.Web/sites"]
 				    }
                 ]
 			}
