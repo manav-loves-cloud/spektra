@@ -1,0 +1,293 @@
+﻿{
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/disks/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ManagedIdentity/userAssignedIdentities/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/routeTables/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachineScaleSets/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerRegistry/registries/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerService/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerService/managedClusters/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.DBforPostgreSQL/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.DocumentDb/databaseAccounts/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.EventGrid/topics/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.EventHub/*"
+            },
+
+            {
+              "field": "type",
+              "like": "microsoft.insights/actiongroups/*"
+            },
+            {
+              "field": "type",
+              "like": "microsoft.insights/components/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Logic/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkInterfaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/loadBalancers/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/publicIPAddresses/*"
+            },
+
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkSecurityGroups/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/publicIPAddresses/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/virtualNetworks/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.OperationalInsights/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ServiceBus/namespaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Sql/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Sql/servers/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Storage/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Web/serverFarms/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Web/sites/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Web/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Storage/register/action/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.OperationsManagement/solutions/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerInstance/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Automation/automationAccounts/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Batch/batchAccounts/*"
+            },
+            {
+              "field": "type",
+              "in": [ "Microsoft.Automation/automationAccounts","Microsoft.Batch/batchAccounts","Microsoft.ContainerInstance", "Microsoft.OperationsManagement", "Microsoft.Storage/register", "microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/disks", "Microsoft.ManagedIdentity/userAssignedIdentities", "Microsoft.Network/routeTables", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachineScaleSets", "Microsoft.ContainerRegistry/registries", "Microsoft.ContainerService", "Microsoft.ContainerService/managedClusters", "Microsoft.DBforPostgreSQL", "Microsoft.DocumentDb/databaseAccounts", "Microsoft.EventGrid/topics", "Microsoft.EventHub", "microsoft.insights/actiongroups", "microsoft.insights/components", "Microsoft.Logic/workflows", "Microsoft.Network/networkInterfaces", "Microsoft.Network/loadBalancers", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql", "Microsoft.Sql/servers", "Microsoft.Storage", "Microsoft.Web/serverFarms", "Microsoft.Web/sites", "Microsoft.Web" ]
+            }
+          ]
+        }
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/disks"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Compute/disks/Sku.Tier",
+              "in": [ "Standard", "Premium" ]
+            }
+          }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "not": {
+              "allOf": [
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imageOffer",
+                  "in": [ "UbuntuServer" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imagePublisher",
+                  "in": [ "Canonical" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imageSku",
+                  "in": [ "18.04-LTS" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/sku.name",
+                  "in": [ "Standard_B1s" ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachineScaleSets"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Compute/virtualMachineScaleSets/Sku.Name",
+              "in": [ "Standard_B1s", "Standard_B2s", "Standard_DS2_v2" ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/loadBalancers"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Network/loadBalancers/Sku.Name",
+              "in": [ "Basic", "Standard" ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.ContainerRegistry/registries"
+          },
+          {
+            "field": "Microsoft.ContainerRegistry/registries/sku.name",
+            "notIn": [ "Basic" ]
+          }
+        ]
+      },
+
+      {
+        "allOf": [
+          {
+            "source": "action",
+            "equals": "Microsoft.Storage/storageAccounts/write"
+          },
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Storage/storageAccounts/sku.name",
+              "in": [ "Standard_LRS", "Standard_RAGRS" ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Web/serverfarms"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Web/serverfarms/sku.name",
+              "in": [ "F1", "Y1" ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/loadBalancers"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Network/loadBalancers/Sku.Name",
+              "in": [ "Basic" ]
+            }
+          }
+        ]
+      }
+
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
