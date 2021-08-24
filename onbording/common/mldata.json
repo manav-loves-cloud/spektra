@@ -1,0 +1,341 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "COVID19Articles_Test": {
+      "type": "String",
+      "defaultValue": "https://experienceazure.blob.core.windows.net/templates/ai-iad/ai-iad-combined/test.csv",
+      "metadata": {
+        "description": "The Http URL."
+      }
+    },
+
+    "datasetNametest": {
+      "type": "String",
+      "defaultValue": "COVID19Articles_Test",
+      "metadata": {
+        "description": "The name of the dataset."
+      }
+    },
+  
+    "datasetDescription": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "Optional : The description for the dataset."
+      }
+    },
+    "sourceType": {
+      "defaultValue": "delimited_files",
+      "allowedValues": [
+        "delimited_files",
+        "json_lines_files",
+        "parquet_files"
+      ],
+      "type": "String",
+      "metadata": {
+        "description": "Data source type"
+      }
+    },
+    "separator": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "Optional: The separator used to split columns for 'delimited_files' sourceType, default to ',' for 'delimited_files'"
+      }
+    },
+    "header": {
+      "defaultValue": "all_files_have_same_headers",
+      "allowedValues": [
+        "all_files_have_same_headers",
+        "only_first_file_has_headers",
+        "no_headers",
+        "combine_all_files_headers"
+      ],
+      "type": "String",
+      "metadata": {
+        "description": "Optional :  Header type. Defaults to 'all_files_have_same_headers'"
+      }
+    },
+    "fineGrainTimestamp": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "Optional : Column name to be used as FineGrainTimestamp"
+      }
+    },
+    "coarseGrainTimestamp": {
+      "defaultValue": "",
+      "type": "String",
+      "metadata": {
+        "description": "Optional : Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'."
+      }
+    },
+    "tags": {
+      "defaultValue": {},
+      "type": "Object",
+      "metadata": {
+        "description": "Optional : Provide JSON object with 'key,value' pairs to add as tags on dataset. Example- {\"sampleTag1\": \"tagValue1\", \"sampleTag2\": \"tagValue2\"}"
+      }
+    },
+    "skipValidation": {
+      "defaultValue": false,
+      "type": "Bool",
+      "metadata": {
+        "description": "Optional :  Skip validation that ensures data can be loaded from the dataset before registration."
+      }
+    },
+    "includePath": {
+      "defaultValue": false,
+      "type": "Bool",
+      "metadata": {
+        "description": "Optional :  Boolean to keep path information as column in the dataset. Defaults to False. This is useful when reading multiple files, and want to know which file a particular record originated from, or to keep useful information in file path."
+      }
+    },
+    "amlWorkspaceName": {
+      "type": "string",
+      "defaultValue": "ai-in-a-day-",
+      "metadata": {
+        "description": "The name of the Azure Databricks workspace to create."
+      }
+    },
+    "azuserobjectid": {
+      "type": "string"
+    },
+    "DeploymentID": {
+      "type": "string"
+    },
+    "workspaceName": {
+      "type": "String"
+    }
+  },
+  "variables": {
+   
+    "AzureSubscriptionID": "[subscription().subscriptionId]",
+    "AzureTenantID": "[subscription().tenantId]",
+    "rgname": "[resourceGroup().name]",
+    "location": "[resourceGroup().location]",
+    "storageaccountname": "[concat('bhavan', parameters('DeploymentID'))]",
+    "storageAccountId": "[concat('/subscriptions/', variables('AzureSubscriptionID'), '/resourcegroups/', variables('rgname'),'/providers/Microsoft.Storage/storageAccounts/',variables('storageaccountname'))]",
+    "resourceNamePrefix": "bhavan",
+    "mlstorageaccountname": "[concat('mlstrg', parameters('DeploymentID'))]",
+    "keyvaultname": "[concat(variables('resourceNamePrefix'), '-Bhavan-', parameters('DeploymentID'))]",
+    "appinsightname": "[concat(variables('resourceNamePrefix'), '-appinsi-', parameters('DeploymentID'))]",
+    "containerregistryname": "[concat('techimmersioncr', parameters('DeploymentID'))]",
+    "amlworkspacename": "[concat(parameters('amlWorkspaceName'), parameters('DeploymentID'))]",
+    "keyVaultId": "[concat('/subscriptions/', variables('AzureSubscriptionID'), '/resourcegroups/', variables('rgname'),'/providers/Microsoft.KeyVault/vaults/',variables('keyvaultname'))]",
+    "mlstorageAccountId": "[concat('/subscriptions/', variables('AzureSubscriptionID'), '/resourcegroups/', variables('rgname'),'/providers/Microsoft.Storage/storageAccounts/',variables('mlstorageaccountname'))]",
+    "appInsightsId": "[concat('/subscriptions/', variables('AzureSubscriptionID'), '/resourcegroups/', variables('rgname'),'/providers/Microsoft.Insights/components/',variables('appinsightname'))]",
+    "containerRegistryId": "[concat('/subscriptions/', variables('AzureSubscriptionID'), '/resourcegroups/', variables('rgname'),'/providers/Microsoft.ContainerRegistry/registries/',variables('containerregistryname'))]",
+    "workspaceName": "ai-adb-ws",
+    "apiVersion": "2020-08-01"
+
+  },
+  "resources": [
+
+    {
+      "name": "[variables('mlstorageaccountname')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
+      "location": "[variables('location')]",
+      "properties": {
+        "supportsHttpsTrafficOnly": "false"
+      },
+      "dependsOn": [],
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage"
+    },
+    {
+      "apiVersion": "2020-03-01",
+      "name": "[variables('amlworkspacename')]",
+      "location": "[resourceGroup().location]",
+      "type": "Microsoft.MachineLearningServices/workspaces",
+      "properties": {
+        "containerRegistry": "[variables('containerRegistryId')]",
+        "keyVault": "[variables('keyVaultId')]",
+        "storageAccount": "[variables('mlstorageAccountId')]",
+        "applicationInsights": "[variables('appInsightsId')]"
+      },
+      "sku": {
+        "tier": "enterprise",
+        "name": "enterprise"
+      },
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.KeyVault/vaults/', variables('keyvaultname'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('mlstorageaccountname'))]",
+        "[concat('microsoft.insights/components/', variables('appinsightname'))]",
+        "[concat('Microsoft.ContainerRegistry/registries/', variables('containerregistryname'))]"
+      ]
+    },
+
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces/datasets",
+      "apiVersion": "2020-05-01-preview",
+      "name": "[concat(variables('amlworkspacename'), '/', parameters('datasetNametest'))]",
+      "location": "[variables('location')]",
+      "properties": {
+        "SkipValidation": "[parameters('skipValidation')]",
+        "DatasetType": "tabular",
+        "Parameters": {
+          "Header": "[parameters('header')]",
+          "IncludePath": "[parameters('includePath')]",
+          "Path": {
+            "HttpUrl": "[parameters('COVID19Articles_Test')]"
+          },
+          "Separator": "[parameters('separator')]",
+          "SourceType": "[parameters('sourceType')]"
+        },
+        "Registration": {
+          "Description": "[parameters('datasetDescription')]",
+          "Tags": "[parameters('tags')]"
+        },
+        "TimeSeries": {
+          "FineGrainTimestamp": "[parameters('fineGrainTimestamp')]",
+          "CoarseGrainTimestamp": "[parameters('coarseGrainTimestamp')]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('amlworkspacename'))]"
+      ]
+    },
+
+    
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces/computes",
+      "apiVersion": "2021-01-01",
+      "name": "[concat(variables('amlworkspacename'), '/aml-compute-cpu')]",
+      "location": "[resourceGroup().location]",
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.MachineLearningServices/workspaces/',variables('amlworkspacename'))]"
+      ],
+      "properties": {
+        "computeType": "AmlCompute",
+        "computeLocation": "[resourceGroup().location]",
+        "properties": {
+          "vmSize": "STANDARD_DS3_V2",
+          "vmPriority": "Dedicated",
+          "scaleSettings": {
+            "maxNodeCount": 2,
+            "minNodeCount": 0,
+            "nodeIdleTimeBeforeScaleDown": "PT2M"
+          },
+          "remoteLoginPortPublicAccess": "Enabled"
+        }
+      }
+    },
+    {
+      "apiVersion": "2016-10-01",
+      "name": "[variables('keyvaultname')]",
+      "location": "[variables('location')]",
+      "type": "Microsoft.KeyVault/vaults",
+      "properties": {
+        "enabledForDeployment": false,
+        "enabledForTemplateDeployment": false,
+        "enabledForDiskEncryption": false,
+
+        "tenantId": "[variables('AzureTenantID')]",
+        "sku": {
+          "name": "Standard",
+          "family": "A"
+        },
+        "networkAcls": {
+          "value": {
+            "defaultAction": "Allow",
+            "bypass": "AzureServices",
+            "virtualNetworkRules": [],
+            "ipRules": []
+          }
+        },
+        "accessPolicies": [
+          {
+            "tenantId": "[variables('AzureTenantID')]",
+            "objectId": "[parameters('azuserobjectid')]",
+            "permissions": {
+              "keys": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "Decrypt",
+                "Encrypt",
+                "UnwrapKey",
+                "WrapKey",
+                "Verify",
+                "Sign",
+                "Purge"
+              ],
+              "secrets": [
+                "Get",
+                "List",
+                "Set",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "Purge"
+              ],
+              "certificates": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "ManageContacts",
+                "ManageIssuers",
+                "GetIssuers",
+                "ListIssuers",
+                "SetIssuers",
+                "DeleteIssuers",
+                "Purge"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "[variables('appinsightname')]",
+      "type": "microsoft.insights/components",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-08-01",
+      "properties": {
+        "ApplicationId": "[variables('appinsightname')]",
+        "Application_Type": "web",
+        "Flow_Type": "Redfield",
+        "Request_Source": "IbizaAIExtension"
+      }
+    },
+    {
+      "apiVersion": "2017-10-01",
+      "name": "[variables('containerregistryname')]",
+      "location": "[resourceGroup().location]",
+      "type": "Microsoft.ContainerRegistry/registries",
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "adminUserEnabled": true
+      },
+      "kind": "Registry"
+    }
+
+  ]
+  
+}
