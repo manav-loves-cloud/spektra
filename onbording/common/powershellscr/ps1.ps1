@@ -1,23 +1,7 @@
-﻿New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\" -Name "Reliability" –Force
-New-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Reliability' `
-                 -Name ShutdownReasonOn `
-                 -Value 0x00000000 `
-                 -PropertyType DWORD `
-                 -Force
 
-
-New-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\" -Name "Reliability" –Force
-New-ItemProperty -Path 'HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\Reliability' `
-                 -Name ShutdownReasonOn `
-                 -Value 0x00000000 `
-                 -PropertyType DWORD `
-                 -Force
-sleep 5
-
-#Download git repository 
 New-Item -ItemType directory -Path C:\AllFiles
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://github.com/MicrosoftLearning/AZ-304-Microsoft-Azure-Architect-Design/archive/master.zip","C:\AllFiles\AllFiles.zip")
+$WebClient.DownloadFile("https://github.com/himanshuahlawat31/udacity-esnd/raw/main/Esnd-4.zip","C:\AllFiles\AllFiles.zip")
 #unziping folder
 function Expand-ZIPFile($file, $destination)
 {
