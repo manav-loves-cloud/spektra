@@ -1,0 +1,17 @@
+﻿[
+  {
+    "Name": " Reading Text in Images and Documents",
+    "Language": "English",
+    "BaseURL": "https://github.com/CloudLabs-MOC/AI-102-AIEngineer/tree/prod/Instructions",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/prod/Instructions/20-ocr.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/prod/Instructions/21-form-recognizer.md",
+        "Order": 2
+      }
+    ]
+  }
+]
