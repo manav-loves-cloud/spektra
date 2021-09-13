@@ -1,0 +1,17 @@
+﻿[
+  {
+    "Name": "Conversational AI and the Azure Bot Service",
+    "Language": "English",
+    "BaseURL": "https://github.com/CloudLabs-MOC/AI-102-AIEngineer/tree/prod/Instructions",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/prod/Instructions/17-image-classification.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/prod/Instructions/18-object-detection.md",
+        "Order": 2
+      }
+    ]
+  }
+]
