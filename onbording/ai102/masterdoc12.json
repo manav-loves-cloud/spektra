@@ -1,0 +1,21 @@
+﻿[
+  {
+    "Name": "Creating a Knowledge Mining Solution",
+    "Language": "English",
+    "BaseURL": "https://github.com/CloudLabs-MOC/AI-102-AIEngineer/tree/prod/Instructions",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/master/Instructions/22-azure-search.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/master/Instructions/23-search-skills.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/master/Instructions/24-knowledge-store.md",
+        "Order": 1
+      }
+    ]
+  }
+]
