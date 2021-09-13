@@ -1,0 +1,13 @@
+[
+    {
+      "Name": "Conversational AI and the Azure Bot Service",
+      "Language": "English",
+      "BaseURL": "https://github.com/CloudLabs-MOC/AI-102-AIEngineer/tree/prod/Instructions",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AI-102-AIEngineer/prod/Instructions/19-face-service.md",
+          "Order": 1
+        }
+      ]
+    }
+  ]
