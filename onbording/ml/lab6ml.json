@@ -201,7 +201,7 @@
         },
         {
             "type": "Microsoft.Synapse/workspaces/sqlPools",
-            "apiVersion": "2019-06-01-preview",
+            "apiVersion": "2018-07-01",
             "name": "[concat(variables('synapseWorkspaceName'), '/', variables('sqlPoolName'))]",
             "location": "[variables('location')]",
             "dependsOn": [
