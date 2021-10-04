@@ -1,0 +1,113 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceSuffix": {
+            "type": "String",
+            "metadata": {
+                "description": "A suffix that is used to uniquely name deployed resources."
+            }
+        }
+    },
+    "variables": {
+        "tenantId": "[subscription().tenantId]",
+        "location": "[resourceGroup().location]",
+        "amlWorkspaceName": "[toLower(concat('amlworkspace',parameters('resourceSuffix')))]",
+        "amlWorkspaceIdentityType": "systemAssigned",
+        "dlsName": "[toLower(concat('datalake',parameters('resourceSuffix')))]",
+        "dlsFsName": "[toLower('default-fs')]",
+        "amlsName": "[toLower(concat('amlstore', parameters('resourceSuffix')))]",
+        "keyVaultName": "[toLower(concat('akv', parameters('resourceSuffix')))]",
+        "appInsightsName": "[toLower(concat('appinsights', parameters('resourceSuffix')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('dlsName')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "accessTier": "Hot",
+                "supportsHttpsTrafficOnly": true,
+                "isHnsEnabled": true
+            },
+            "resources": [
+                {
+                    "type": "blobServices/containers",
+                    "apiVersion": "2019-06-01",
+                    "name": "[concat('default/', variables('dlsFsName'))]",
+                    "dependsOn": [
+                        "[variables('dlsName')]"
+                    ],
+                    "properties": {
+                        "publicAccess": "None"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('amlsName')]",
+            "location": "[variables('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "accessTier": "Hot",
+                "supportsHttpsTrafficOnly": true,
+                "isHnsEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2019-09-01",
+            "name": "[variables('keyVaultName')]",
+            "location": "[variables('location')]",
+            "properties": {
+                "tenantId": "[variables('tenantId')]",
+                "sku": {
+                    "name": "standard",
+                    "family": "A"
+                },
+                "accessPolicies": []
+            }
+        },
+        {
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[variables('appInsightsName')]",
+            "location": "[variables('location')]",
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web"
+            }
+        },
+        
+        {
+            "type": "Microsoft.MachineLearningServices/workspaces",
+            "apiVersion": "2020-09-01-preview",
+            "name": "[variables('amlWorkspaceName')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('amlsName'))]",
+                "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+                "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+            ],
+            "identity": {
+                "type": "[variables('amlWorkspaceIdentityType')]"
+            },
+            "properties": {
+                "friendlyName": "[variables('amlWorkspaceName')]",
+                "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', variables('amlsName'))]",
+                "keyVault": "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+                "applicationInsights": "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+            }
+        }
+    ]
+}
