@@ -255,7 +255,7 @@
         },
         {
             "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2016-09-01",
+            "apiVersion": "2020-10-01-preview",
             "name": "[guid(uniqueString(variables('dlsName')))]",
             "location": "[variables('location')]",
             "dependsOn": [
