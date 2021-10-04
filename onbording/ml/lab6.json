@@ -251,7 +251,7 @@
         "scope": "[concat('Microsoft.Storage/storageAccounts/', variables('dlsName'))]",
         "type": "Microsoft.Authorization/roleAssignments",
         "apiVersion": "2020-04-01-preview",
-        "name": "[guid(uniqueString(variables('dlsName')))]",
+        "name": "[variables('dlsName')]",
         "location": "[variables('location')]",
         "dependsOn": [
           "[variables('synapseWorkspaceName')]"
