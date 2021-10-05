@@ -2,17 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "resourceSuffix": {
-            "value": "GEN-UNIQUE-3"
+        "deployment id": {
+            "value": "123432"
         }, 
         "sparkNodeSize": {
             "value": "Small"
         },
         "sqlAdministratorLogin": {
-            "value": "GEN-UNIQUE-6"
+            "value": "sqlpoo"
         },
         "sqlAdministratorLoginPassword": {
-            "value": "GEN-PASSWORD"
+            "value": "Bhavan@123456"
         },
         "sqlPoolSku": {
             "value": "DW100c"
