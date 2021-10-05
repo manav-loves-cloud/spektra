@@ -4,6 +4,7 @@
   "parameters": {
       "deployment id": {
           "type": "String",
+         "defaultValue": "123321",
           "metadata": {
               "description": "A suffix that is used to uniquely name deployed resources."
           }
