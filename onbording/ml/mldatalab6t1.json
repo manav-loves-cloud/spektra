@@ -2,53 +2,39 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "resourceSuffix": {
+        "deployment id": {
             "type": "String",
             "metadata": {
-                "description": "A suffix that is used to uniquely name deployed resources."
+                "description": "deployment id"
             }
         }
     },
     "variables": {
         "tenantId": "[subscription().tenantId]",
         "location": "[resourceGroup().location]",
-        "amlWorkspaceName": "[toLower(concat('amlworkspace',parameters('resourceSuffix')))]",
+        "amlWorkspaceName": "[toLower(concat('amlworkspace',parameters('deployment id')))]",
         "amlWorkspaceIdentityType": "systemAssigned",
-        "dlsName": "[toLower(concat('datalake',parameters('resourceSuffix')))]",
+        "dlsName": "[toLower(concat('datalake',parameters('deployment id')))]",
         "dlsFsName": "[toLower('default-fs')]",
-        "amlsName": "[toLower(concat('amlstore', parameters('resourceSuffix')))]",
-        "keyVaultName": "[toLower(concat('akv', parameters('resourceSuffix')))]",
-        "appInsightsName": "[toLower(concat('appinsights', parameters('resourceSuffix')))]"
+        "amlsName": "[toLower(concat('amlstore', parameters('deployment id')))]",
+        "keyVaultName": "[toLower(concat('akv', parameters('deployment id')))]",
+        "appInsightsName": "[toLower(concat('appinsights', parameters('deployment id')))]"
     },
     "resources": [
         {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[variables('dlsName')]",
-            "location": "[variables('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-09-01",
+            "name": "pid-e843308b-3ce2-42a2-b743-2f21b36a5e68",
             "properties": {
-                "accessTier": "Hot",
-                "supportsHttpsTrafficOnly": true,
-                "isHnsEnabled": true
-            },
-            "resources": [
-                {
-                    "type": "blobServices/containers",
-                    "apiVersion": "2019-06-01",
-                    "name": "[concat('default/', variables('dlsFsName'))]",
-                    "dependsOn": [
-                        "[variables('dlsName')]"
-                    ],
-                    "properties": {
-                        "publicAccess": "None"
-                    }
-                }
-            ]
-        },
+              "mode": "Incremental",
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "resources": []
+              }
+            }
+          },
+       
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
