@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "deployment id": {
+      "deploymentid": {
           "type": "String",
          "defaultValue": "123321",
           "metadata": {
@@ -58,8 +58,8 @@
   },
   "variables": {
     "location": "[resourceGroup().location]",
-    "synapseWorkspaceName": "[toLower(concat('synapseworkspace',parameters('deployment id')))]",
-    "dlsName": "[toLower(concat('datalake',parameters('deployment id')))]",
+    "synapseWorkspaceName": "[toLower(concat('synapseworkspace',parameters('deploymentid')))]",
+    "dlsName": "[toLower(concat('datalake',parameters('deploymentid')))]",
     "dlsFsName": "[toLower('default-fs')]",
      "sqlPoolName": "[toLower('sqlpool01')]",
     "sparkPoolName": "[toLower('sparkpool01')]"
