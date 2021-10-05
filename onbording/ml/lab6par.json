@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "deployment id": {
-            "value": "GET-DEPLOYMENT-ID"
+            "value": "963246"
         }, 
         "sparkNodeSize": {
             "value": "Small"
