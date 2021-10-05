@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "deployment id": {
-            "value": "810575"
+            "value": "GET-DEPLOYMENT-ID"
         }
     }
 }
