@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "deployment id": {
-            "value": "123432"
+            "value": "GET-DEPLOYMENT-ID"
         }, 
         "sparkNodeSize": {
             "value": "Small"
         },
         "sqlAdministratorLogin": {
-            "value": "sqlpoo"
+            "value": "sqlpool"
         },
         "sqlAdministratorLoginPassword": {
-            "value": "Bhavan@123456"
+            "value": "Password@1234"
         },
         "sqlPoolSku": {
             "value": "DW100c"
