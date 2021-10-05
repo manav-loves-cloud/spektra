@@ -2,8 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "deployment id": {
-            "value": "963246"
+        "deploymentid": {
+            "value": "CS1"
         }, 
         "sparkNodeSize": {
             "value": "Small"
