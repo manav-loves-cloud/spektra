@@ -209,7 +209,7 @@
     {
       "scope": "[concat('Microsoft.Storage/storageAccounts/', variables('dlsName'))]",
       "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-06-01-preview",
+      "apiVersion": "2019-05-01",
       "name": "[guid(uniqueString(variables('dlsName')))]",
       "location": "[variables('location')]",
       "dependsOn": [
