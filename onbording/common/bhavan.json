@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure Databricks workspace to create."
+      }
+    },
+    "pricingTier": {
+      "type": "string",
+      "defaultValue": "premium",
+      "allowedValues": [
+        "standard",
+        "premium"
+      ],
+      "metadata": {
+        "description": "The pricing tier of workspace."
+      }
+    },
+    "amlWorkspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "AML Workspace name."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "amlWorkspaceSKU": {
+      "type": "string",
+      "defaultValue": "enterprise",
+      "allowedValues": [
+        "basic",
+        "enterprise"
+      ],
+      "metadata": {
+        "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
+      }
+    },
+    "sshAccess": {
+      "type": "string",
+      "defaultValue": "Disabled",
+      "allowedValues": [
+        "Disabled",
+        "Enabled"
+      ],
+      "metadata": {
+        "description": "Specifies whether SSH access should be enabled for compute instance"
+      }
+    },
+    "azuserobjectid": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "amlworkspacename": "[concat(parameters('amlWorkspaceName'),parameters('workspaceName'))]",
+    "machineLearningApiVersion": "2018-11-19",
+    "newStorageAccountName": "[concat('ml',parameters('workspaceName'))]",
+    "newStorageAccountType": "Standard_LRS",
+    "storageApiVersion": "2016-12-01",
+    "appInsightsApiVersion": "2015-05-01",
+    "appInsightsName": "[concat('mlappinsight',parameters('workspaceName'))]",
+    "appInsightsKind": "web",
+    "appInsightsType": "web",
+    "keyVaultApiVersion": "2015-06-01",
+    "keyVaultName": "[concat('mlkeyvault',parameters('workspaceName'))]",
+    "keyVaultTenant": "[subscription().tenantId]",
+    "subscriptionid": "[subscription().subscriptionId]",
+    "computeInstanceName": "[concat('notebook',parameters('workspaceName'))]", 
+    "AzureTenantID": "[subscription().tenantId]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-09-01",
+      "name": "pid-e843308b-3ce2-42a2-b743-2f21b36a5e68",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces",
+      "name": "[variables('amlworkspacename')]",
+      "apiVersion": "[variables('machineLearningApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "sku": {
+        "tier": "[parameters('amlWorkspaceSKU')]",
+        "name": "[parameters('amlWorkspaceSKU')]"
+      },
+      "properties": {
+        "keyVault": "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName'))]",
+        "applicationInsights": "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces/computes",
+      "apiVersion": "2021-07-01",
+      "name": "[concat(variables('amlworkspacename'), '/', variables('computeInstanceName'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.MachineLearningServices/workspaces/', variables('amlworkspacename'))]"
+      ],
+      "properties": {
+        "computeType": "ComputeInstance",
+        "disableLocalAuth": true,
+        "properties": {
+          "VMSize": "Standard_DS2_v2",
+          "applicationSharingPolicy": "Personal",
+          "sshSettings": {
+            "sshPublicAccess": "[parameters('sshAccess')]"
+          },
+          "computeInstanceAuthorizationType": "personal",
+          "personalComputeInstanceSettings": {
+            "assignedUser": {
+              "objectId": "[parameters('azuserobjectid')]",
+              "tenantId": "[variables('AzureTenantID')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "[variables('newStorageAccountType')]"
+      },
+      "kind": "Storage",
+      "name": "[variables('newStorageAccountName')]",
+      "apiVersion": "[variables('storageApiVersion')]",
+      "location": "[resourceGroup().location]"
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "name": "[variables('keyVaultName')]",
+      "apiVersion": "[variables('keyVaultApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accessPolicies": [],
+        "enabledForDeployment": true,
+        "enabledForTemplateDeployment": true,
+        "enabledForVolumeEncryption": true,
+        "sku": {
+          "name": "Standard",
+          "family": "A"
+        },
+        "tenantId": "[variables('keyVaultTenant')]"
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "kind": "[variables('appInsightsKind')]",
+      "name": "[variables('appInsightsName')]",
+      "apiVersion": "[variables('appInsightsApiVersion')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "Application_Type": "[variables('appInsightsType')]"
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
+    
