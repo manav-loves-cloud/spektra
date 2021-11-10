@@ -196,7 +196,7 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]",
-        "[concat('Microsoft.MachineLearningServices/workspaces/', variables('amlworkspacename'), /computes/', variables('computeInstanceName'))]"
+        "[concat('Microsoft.MachineLearningServices/workspaces/', variables('amlworkspacename'), '/computes/', variables('computeInstanceName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Compute",
