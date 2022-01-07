@@ -1,0 +1,89 @@
+{
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkInterfaces/*"
+            },
+            {
+              "field": "type",
+              "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/disks/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/extensions/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerRegistry/registries/*"
+            },
+            {
+              "field": "type",
+              "like": "microsoft.insights/actiongroups/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Insights/components/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.KeyVault/vaults/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.MachineLearningServices/workspaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkSecurityGroups/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/publicIPAddresses/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/virtualNetworks/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Storage/storageAccounts/*"
+            },
+            {
+              "field": "type",
+              "in": [ "Microsoft.Network/networkInterfaces", "Microsoft.Compute/virtualMachines", "microsoft.alertsmanagement/smartDetectorAlertRules", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.ContainerRegistry/registries", "microsoft.insights/actiongroups", "Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.Storage/storageAccounts" ]
+            }
+          ]
+        }
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/disks"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Compute/disks/Sku.Tier",
+              "in": [ "Premium" ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
