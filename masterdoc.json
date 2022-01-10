@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "solution-accelerator-many-models",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/bhavangowdan/Udacity/main/solution-accelerator-lab.md",
+        "Order": 1
+
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/microsoft/solution-accelerator-many-models/master/README.md",
+        "Order": 2
+      }
+    ]
+  }
+]
