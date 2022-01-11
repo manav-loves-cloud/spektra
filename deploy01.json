@@ -165,7 +165,7 @@
             "createOption": "fromImage",
             "name": "[concat(variables('vmName'), '-osdisk')]",
             "managedDisk": {
-              "storageAccountType": "Standard_HDD"
+              "storageAccountType": "Standard_LRS"
             }
           },
           "dataDisks": []
