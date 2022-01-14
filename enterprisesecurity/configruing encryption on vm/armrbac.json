@@ -7,7 +7,7 @@
                     "Microsoft.Authorization/*/read",
                     "Microsoft.Compute/diskEncryptionSets/*",
                     "Microsoft.Compute/virtualMachines/*",
-                    "Microsoft.KeyVault/vaults",
+                    "Microsoft.KeyVault/vaults/*",
                     "Microsoft.Compute/virtualMachines/extensions/*",
                     "Microsoft.Network/networkInterfaces/*",
                     "Microsoft.Network/networkSecurityGroups/*",
