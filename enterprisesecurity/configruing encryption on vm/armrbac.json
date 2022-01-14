@@ -1,1 +1,22 @@
-sdvsd
+{
+    "Name":  "Spektra Custom RBAC",
+    "Id":  null,
+    "IsCustom":  true,
+    "Description":  "Spektra Training Custom Role.",
+    "Actions":  [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Compute/diskEncryptionSets/*",
+                    "Microsoft.Compute/virtualMachines/*",
+                    "Microsoft.Compute/virtualMachines/extensions/*",
+                    "Microsoft.Network/networkInterfaces/*",
+                    "Microsoft.Network/networkSecurityGroups/*",
+                    "Microsoft.Network/publicIPAddresses/*",
+                    "Microsoft.Network/virtualNetworks/*",
+                    "Microsoft.RecoveryServices/vaults/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                ],
+    "NotActions":  [
+
+                   ]
+}
