@@ -32,6 +32,10 @@
 				    "field": "type",
 				    "like": "Microsoft.KeyVault/vaults/*"
 				    },
+				   {
+				    "field": "type",
+				    "like": "Microsoft.Compute/disks/*"
+				    },
                     {
 				    "field": "type",
 				    "like": "Microsoft.Network/virtualNetworks/*"
@@ -42,7 +46,7 @@
 				    },
                     {
 				    "field": "type",
-				    "in": ["Microsoft.Compute/diskEncryptionSets","Microsoft.KeyVault/vaults", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.RecoveryServices/vaults"]
+				    "in": ["Microsoft.Compute/diskEncryptionSets","Microsoft.KeyVault/vaults","Microsoft.KeyVault/vaults", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.RecoveryServices/vaults"]
 				    }
                 ]
 			}
