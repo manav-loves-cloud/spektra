@@ -8,6 +8,7 @@
                     "Microsoft.Compute/diskEncryptionSets/*",
                     "Microsoft.Compute/virtualMachines/*",
                     "Microsoft.KeyVault/vaults/*",
+                    "Microsoft.Compute/disks/*",
                     "Microsoft.Compute/virtualMachines/extensions/*",
                     "Microsoft.Network/networkInterfaces/*",
                     "Microsoft.Network/networkSecurityGroups/*",
