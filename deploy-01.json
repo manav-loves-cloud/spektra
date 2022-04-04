@@ -1,0 +1,36 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "AzureUserName": {
+        "type": "string"
+        },
+        "AzurePassword": {
+        "type": "securestring"
+        },
+        "ODLID": {
+        "type": "string"
+        },
+        "DeploymentID": {
+        "type": "string"
+        }
+    },
+     "variables": {
+         "logAnalyticsWorkspaceName": "[concat('  azuredevops-', parameters('DeploymentID'))]",
+         "location": "[resourceGroup().location]",
+         "sku": "pergb2018"
+     },
+    "resources": [
+        {
+            "apiVersion": "2017-03-15-preview",
+            "name": "[variables('logAnalyticsWorkspaceName')]",
+            "location": "[variables('location')]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "properties": {
+                "sku": {
+                    "name": "[variables('sku')]"
+                }
+            }
+        }
+    ]
+}
