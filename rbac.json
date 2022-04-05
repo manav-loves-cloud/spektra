@@ -14,7 +14,8 @@
                     "Microsoft.OperationalInsights/workspaces/*",
                     "Microsoft.Resources/deployments/*",
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
-                    "Microsoft.Storage/storageAccounts/*"
+                    "Microsoft.Storage/storageAccounts/*",
+                     "Microsoft.Authorization/policyDefinitions/*"
                 ],
     "NotActions":  [
 
