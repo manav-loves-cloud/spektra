@@ -4,7 +4,7 @@
     "IsCustom":  true,
     "Description":  "Spektra Training Custom Role.",
     "Actions":  [
-                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Authorization/*",
                     "Microsoft.Compute/disks/*",
                     "Microsoft.Compute/virtualMachines/*",
                     "Microsoft.Network/networkInterfaces/*",
