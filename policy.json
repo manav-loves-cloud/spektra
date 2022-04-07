@@ -51,20 +51,7 @@
                 ]
 			}
 		 },
-          {
-		  "allof": [
-			{
-			  "field": "type",
-			  "equals": "Microsoft.Compute/disks"
-			},
-			{
-			  "not": {
-				"field": "Microsoft.Compute/disks/Sku.Tier",
-				"in": ["Premium"]
-				}
-			  }
-			]
-		  },
+
           {
 		  "allOf": [
 			{
