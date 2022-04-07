@@ -5,7 +5,7 @@
     "Description":  "Spektra Training Custom Role.",
     "Actions":  [
                     "Microsoft.Authorization/*",
-                    "Microsoft.Compute/disks/*",
+                    "Microsoft.Compute/*",
                     "Microsoft.Compute/virtualMachines/*",
                     "Microsoft.Network/networkInterfaces/*",
                     "Microsoft.Network/networkSecurityGroups/*",
