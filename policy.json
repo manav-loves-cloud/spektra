@@ -92,7 +92,7 @@
 			  "not":{  
 				 "field":"Microsoft.Compute/disks/Sku.Tier",
 				 "in":[  
-					"Standard"
+					"Standard_LRS"
 				 ]
 			  }
 		   }
