@@ -1,0 +1,67 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Insights/components/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.KeyVault/vaults/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.MachineLearningServices/workspaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Storage/storageAccounts"]
+				    }
+                ]
+			}
+		 },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.KeyVault/vaults"
+			},
+			{
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": ["Standard"]
+            }
+			]
+		  },
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS"]
+				  }
+			   }
+			]
+		  },
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
