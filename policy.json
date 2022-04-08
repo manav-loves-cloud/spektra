@@ -6,7 +6,7 @@
 			 "anyOf": [
 				   {
 				   "field": "type",
-				   "like": "Microsoft.Compute/disks/*"
+				   "like": "Microsoft.Compute/*"
 				   },
 				   {
 				   "field": "type",
@@ -46,7 +46,7 @@
 				   },
 				   {
 				   "field": "type",
-				   "in": ["Microsoft.Authorization/policyAssignments","Microsoft.Authorization/policyDefinitions", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.Storage/storageAccounts"]
+				   "in": ["Microsoft.Authorization/policyAssignments","Microsoft.Authorization/policyDefinitions", "Microsoft.Compute", "Microsoft.Compute/virtualMachines", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.OperationalInsights/workspaces", "Microsoft.Storage/storageAccounts"]
 				   }
 			   ]
 		   }
