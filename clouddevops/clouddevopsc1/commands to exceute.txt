@@ -11,3 +11,11 @@ terraform show
 packer build demo.json
 az image list
 az image delete -g packer-rg -n myPackerImage
+
+
+#command to deploy the linux via CLI
+az vm create --resource-group Azuredevops --name vm --image Canonical:UbuntuServer:18_04-lts-gen2:latest --size Standard_B1s --generate-ssh-keys --output json --verbose
+
+#Command to create and assign policy
+az policy definition create --name linuxpass --rules policy.json
+az policy assignment create --policy linuxpass
