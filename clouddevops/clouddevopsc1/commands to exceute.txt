@@ -1,0 +1,13 @@
+#for terraform template add main.tf and variables.tf and run the below commands
+terraform init
+terraform plan
+terraform apply
+terraform show
+terraform destroy
+terraform show
+
+
+#Packer template deploy
+packer build demo.json
+az image list
+az image delete -g packer-rg -n myPackerImage
