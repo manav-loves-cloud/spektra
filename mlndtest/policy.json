@@ -1,47 +1,183 @@
 {
-	 "if": {
-	    "anyOf": [
-		 {
-			"not": {
-			  "anyOf": [
-                    {
-				    "field": "type",
-				    "like": "Microsoft.Insights/components/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "Microsoft.KeyVault/vaults/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "Microsoft.MachineLearningServices/workspaces/*"
-				    },
-                    {
-				    "field": "type",
-				    "like": "Microsoft.Storage/storageAccounts/*"
-				    },
-                    {
-				    "field": "type",
-				    "in": ["Microsoft.Insights/components", "Microsoft.KeyVault/vaults", "Microsoft.MachineLearningServices/workspaces", "Microsoft.Storage/storageAccounts"]
-				    }
-                ]
-			}
-		 },
-          {
-		  "allof": [
-			{
-			  "field": "type",
-			  "equals": "Microsoft.KeyVault/vaults"
-			},
-			{
-            "field": "Microsoft.KeyVault/vaults/sku.name",
-            "notIn": ["Standard"]
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/availabilitySets/*"
+            },
+            {
+              "field": "type",
+              "like": "microsoft.alertsmanagement/smartDetectorAlertRules/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerService/managedClusters/write/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerService/managedClusters/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerService/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerInstance/containerGroups"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.insights/actionGroups"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Resources/deployments"
+            },
+
+            {
+              "field": "type",
+              "like": "Microsoft.ContainerRegistry/*"
+            },
+            {
+              "field": "type",
+              "like": "microsoft.insights/actiongroups/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Insights/components/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.KeyVault/vaults/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.MachineLearningServices/workspaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Storage/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/disks/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Compute/virtualMachines/extensions/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/loadBalancers/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkInterfaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/networkSecurityGroups/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/publicIPAddresses/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/routeTables/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Network/virtualNetworks/*"
+            },
+            {
+              "field": "type",
+              "in": [ "Microsoft.Compute/availabilitySets", "Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/loadBalancers", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/routeTables", "Microsoft.Storage", "Microsoft.Network/virtualNetworks" ]
             }
-			]
-		  }
-	  ]
-	},
-	"then": {
-	  "effect": "deny"
-	}
+          ]
+        }
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/disks"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Compute/disks/Sku.Tier",
+              "in": [ "Standard" ]
+            }
+          }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "not": {
+              "allOf": [
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imageOffer",
+                  "in": [ "aks" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imagePublisher",
+                  "in": [ "microsoft-aks" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/imageSku",
+                  "in": [ "aks-ubuntu-1604-202006" ]
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/sku.name",
+                  "in": [ "Standard_D3_v2" ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.KeyVault/vaults"
+          },
+          {
+            "field": "Microsoft.KeyVault/vaults/sku.name",
+            "notIn": [ "Standard" ]
+          }
+        ]
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/loadBalancers"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Network/loadBalancers/Sku.Name",
+              "in": [ "Basic" ]
+            }
+          }
+        ]
+      }
+
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
 }
