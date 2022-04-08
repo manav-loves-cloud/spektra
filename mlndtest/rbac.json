@@ -1,18 +1,35 @@
 {
-    "Name":  "Spektra Custom RBAC",
-    "Id":  null,
-    "IsCustom":  true,
-    "Description":  "Spektra Training Custom Role.",
-    "Actions":  [
-                    "Microsoft.Authorization/*/read",
-                    "Microsoft.Insights/components/*",
-                    "Microsoft.KeyVault/vaults/*",
-                    "Microsoft.MachineLearningServices/workspaces/*",
-                    "Microsoft.Resources/deployments/*",
-                    "Microsoft.Resources/subscriptions/resourceGroups/read",
-                    "Microsoft.Storage/storageAccounts/*"
-                ],
-    "NotActions":  [
+  "Name": "Spektra Custom RBAC",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Spektra Training Custom Role.",
+  "Actions": [
+    "microsoft.alertsmanagement/smartDetectorAlertRules/*",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.ContainerRegistry/registries/*",
+    "Microsoft.ContainerService/*",
+    "Microsoft.ContainerService/managedClusters/*",
+    "microsoft.insights/actiongroups/*",
+    "Microsoft.Insights/components/*",
+    "Microsoft.KeyVault/vaults/*",
+    "Microsoft.MachineLearningServices/workspaces/*",
+    "Microsoft.Resources/deployments/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Storage/storageAccounts/*",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Compute/availabilitySets/*",
+    "Microsoft.Compute/disks/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Compute/virtualMachines/extensions/*",
+    "Microsoft.Network/loadBalancers/*",
+    "Microsoft.Network/networkInterfaces/*",
+    "Microsoft.Network/networkSecurityGroups/*",
+    "Microsoft.Network/publicIPAddresses/*",
+    "Microsoft.Network/routeTables/*",
+    "Microsoft.Network/virtualNetworks/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/read"
+  ],
+  "NotActions": [
 
-                   ]
+  ]
 }
