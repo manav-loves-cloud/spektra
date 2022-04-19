@@ -12,22 +12,19 @@
               "field": "type",
               "like": "Microsoft.OperationsManagement/solutions/*"
             },
-               {
+
+                    {
               "field": "type",
-              "like": "Microsoft.Insights/ActionGroups/*"
+              "like": "Microsoft.WorkloadMonitor/*"
             },
                     {
               "field": "type",
-              "like": "Microsoft.Insights/ActivityLogAlerts/*"
-            },
-                    {
-              "field": "type",
-              "like": "Microsoft.Insights/AlertRules/*"
+              "like": "Microsoft.Insights/*"
             },
             
             {
               "field": "type",
-              "in": [ "Microsoft.Insights/ActionGroups","Microsoft.Insights/ActivityLogAlerts","Microsoft.Insights/AlertRules","Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
+              "in": [ "Microsoft.WorkloadMonitor","Microsoft.Insights","Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
             }
           ]
         }
