@@ -1,0 +1,27 @@
+{
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "Microsoft.OperationalInsights/workspaces/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.OperationsManagement/solutions/*"
+            },
+            {
+              "field": "type",
+              "in": [ "Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
