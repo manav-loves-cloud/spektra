@@ -12,9 +12,22 @@
               "field": "type",
               "like": "Microsoft.OperationsManagement/solutions/*"
             },
+               {
+              "field": "type",
+              "like": "Microsoft.Insights/ActionGroups/*"
+            },
+                    {
+              "field": "type",
+              "like": "Microsoft.Insights/ActivityLogAlerts/*"
+            },
+                    {
+              "field": "type",
+              "like": "Microsoft.Insights/AlertRules/*"
+            },
+            
             {
               "field": "type",
-              "in": [ "Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
+              "in": [ "Microsoft.Insights/ActionGroups","Microsoft.Insights/ActivityLogAlerts","Microsoft.Insights/AlertRules","Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
             }
           ]
         }
