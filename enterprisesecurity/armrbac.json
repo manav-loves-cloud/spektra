@@ -10,7 +10,9 @@
     "Microsoft.Resources/deployments/*",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.WorkloadMonitor/*",
-    "Microsoft.Insights/*"
+     "Microsoft.Insights/ActionGroups/Write",
+    "Microsoft.Insights/ActivityLogAlerts/Write",
+    "Microsoft.Insights/AlertRules/Write"
   ],
   "NotActions": [
 
