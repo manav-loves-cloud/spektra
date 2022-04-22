@@ -29,9 +29,13 @@
               "field": "type",
               "like": "Microsoft.Insights/AlertRules/*"
             },
+                {
+                  "field": "type",
+                  "like": "Microsoft.Compute/virtualMachines/extensions/*"
+                },
             {
               "field": "type",
-              "in": [ "Microsoft.Insights/ActionGroups","Microsoft.Insights/ActivityLogAlerts","Microsoft.Insights/AlertRules","Microsoft.WorkloadMonitor","Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
+              "in": [ "Microsoft.Compute/virtualMachines/extensions","Microsoft.Insights/ActionGroups","Microsoft.Insights/ActivityLogAlerts","Microsoft.Insights/AlertRules","Microsoft.WorkloadMonitor","Microsoft.OperationalInsights/workspaces", "Microsoft.OperationsManagement/solutions" ]
             }
           ]
         }
