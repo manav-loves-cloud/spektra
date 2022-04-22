@@ -13,7 +13,7 @@
      "Microsoft.Insights/ActionGroups/Write",
     "Microsoft.Insights/ActivityLogAlerts/Write",
     "Microsoft.Insights/AlertRules/Write",
-    "Microsoft.Compute/virtualMachines/extensions/*
+    "Microsoft.Compute/virtualMachines/extensions/*"
   ],
   "NotActions": [
 
