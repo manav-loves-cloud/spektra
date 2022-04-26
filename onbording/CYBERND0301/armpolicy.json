@@ -1,0 +1,62 @@
+{
+  "if": {
+    "anyOf": [
+      {
+        "not": {
+          "anyOf": [
+            {
+              "field": "type",
+              "like": "Microsoft.insights/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.OperationalInsights/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.OperationsManagement/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Security/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Security/automations/write"
+            },
+            
+            {
+              "field": "type",
+              "like": "Microsoft.Sql/servers/*"
+            },
+            {
+              "field": "type",
+              "like": "Microsoft.Sql/servers/databases/*"
+            },
+            {
+              "field": "type",
+              "in": [ "Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
+            }
+          ]
+        }
+      },
+      {
+        "allof": [
+          {
+            "field": "type",
+            "equals": "Microsoft.SQL/servers/databases"
+          },
+          {
+            "not": {
+              "field": "Microsoft.Sql/servers/databases/requestedServiceObjectiveName",
+              "in": [ "S0", "System2" ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
