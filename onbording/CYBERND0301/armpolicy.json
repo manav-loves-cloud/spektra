@@ -37,6 +37,10 @@
               "field": "type",
               "like": "Microsoft.SecurityInsights/*"
             },
+                           {
+              "field": "type",
+              "like": "Microsoft.SecurityInsights/workspaces/*"
+            },
                         {
               "field": "type",
               "like": "Microsoft.SecurityInsights/onboardingStates/default"
