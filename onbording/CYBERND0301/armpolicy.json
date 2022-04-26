@@ -39,11 +39,11 @@
             },
                         {
               "field": "type",
-              "like": "Microsoft.SecurityInsights/onboardingStates/write"
+              "like": "Microsoft.SecurityInsights/onboardingStates/default"
             },
             {
               "field": "type",
-              "in": ["Microsoft.SecurityInsights/onboardingStates/write","Microsoft.SecurityInsights","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
+              "in": ["Microsoft.SecurityInsights/onboardingStates/default","Microsoft.SecurityInsights","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
             }
           ]
         }
