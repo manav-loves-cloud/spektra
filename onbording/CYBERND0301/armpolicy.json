@@ -35,7 +35,7 @@
             },
                {
               "field": "type",
-              "like": "Microsoft.SecurityInsights/onboardingStates/*"
+              "like": "Microsoft.SecurityInsights/*"
             },
                         {
               "field": "type",
@@ -43,7 +43,7 @@
             },
             {
               "field": "type",
-              "in": ["Microsoft.SecurityInsights/onboardingStates/write","Microsoft.SecurityInsights/onboardingStates","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
+              "in": ["Microsoft.SecurityInsights/onboardingStates/write","Microsoft.SecurityInsights","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
             }
           ]
         }
