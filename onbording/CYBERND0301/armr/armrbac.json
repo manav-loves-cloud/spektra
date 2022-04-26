@@ -14,8 +14,9 @@
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Sql/servers/*",
     "Microsoft.SecurityInsights/*",
-    "Microsoft.SecurityInsights/onboardingStates/default",
-    "Microsoft.Sql/servers/databases/*"
+    "Microsoft.SecurityInsights/onboardingStates/*",
+    "Microsoft.Sql/servers/databases/*",
+    "Microsoft.SecurityInsights/workspaces/*"
   ],
   "NotActions": [
 
