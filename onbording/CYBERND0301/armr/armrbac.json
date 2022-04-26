@@ -13,7 +13,7 @@
     "Microsoft.Resources/deployments/*",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Sql/servers/*",
-    "Microsoft.SecurityInsights/onboardingStates/*",
+    "Microsoft.SecurityInsights/*",
     "Microsoft.SecurityInsights/onboardingStates/write",
     "Microsoft.Sql/servers/databases/*"
   ],
