@@ -15,8 +15,7 @@
     "Microsoft.Sql/servers/*",
     "Microsoft.SecurityInsights/*",
     "Microsoft.SecurityInsights/onboardingStates/default",
-    "Microsoft.Sql/servers/databases/*",
-    "Microsoft.SecurityInsights/workspaces/*"
+    "Microsoft.Sql/servers/databases/*"
   ],
   "NotActions": [
 
