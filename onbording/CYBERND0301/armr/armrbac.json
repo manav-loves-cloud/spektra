@@ -13,6 +13,7 @@
     "Microsoft.Resources/deployments/*",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Sql/servers/*",
+    "Microsoft.SecurityInsights/onboardingStates/*",
     "Microsoft.Sql/servers/databases/*"
   ],
   "NotActions": [
