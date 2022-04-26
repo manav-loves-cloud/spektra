@@ -24,10 +24,6 @@
               "field": "type",
               "like": "Microsoft.Security/automations/write"
             },
-              {
-              "field": "type",
-              "like": "Microsoft.SecurityInsights/workspaces/*"
-            },
             
             {
               "field": "type",
@@ -47,7 +43,7 @@
             },
             {
               "field": "type",
-              "in": ["Microsoft.SecurityInsights/workspaces","Microsoft.SecurityInsights/onboardingStates/default","Microsoft.SecurityInsights","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
+              "in": ["Microsoft.SecurityInsights/onboardingStates/default","Microsoft.SecurityInsights","Microsoft.Security","Microsoft.Security/automations/write","Microsoft.insights", "Microsoft.OperationalInsights", "Microsoft.OperationsManagement", "Microsoft.Sql/servers", "Microsoft.Sql/servers/databases" ]
             }
           ]
         }
