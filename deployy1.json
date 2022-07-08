@@ -143,14 +143,6 @@
         "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
       ],
       "properties": {
-        "osProfile": {
-          "computerName": "[variables('vmName')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]",
-          "windowsConfiguration": {
-            "provisionVmAgent": "true"
-          }
-        },
         "hardwareProfile": {
           "vmSize": "[variables('virtualMachineSize')]"
         },
