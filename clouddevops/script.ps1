@@ -48,9 +48,14 @@ $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/
  $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passwordupdate.ps1","C:\LabFiles\passwordupdate.ps1")
 
-cd C:\LabFiles
-.\passwordupdate.ps1
+. C:\LabFiles\passupdate.ps1
+$updatedpassword=$uppassword
 
+. C:\LabFiles\AzureCreds.ps1
+
+az Login -u  $AzureUserName -p $AzurePassword
+
+az vm user update -u cyberadmin -p $updatedpassword -n CYBERND0301 -g cyber-$DeploymentID
 
 
 Clear-Host 
