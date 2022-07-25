@@ -1,1 +1,1 @@
-$AzureUserName="AzureUserNameValue"
+$uppassword="AzureUserNameValue"
