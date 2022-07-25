@@ -20,6 +20,12 @@
         "description": "The name of the Azure Databricks workspace to create."
       }
     },
+    "AzureUserName": {
+      "type": "string"
+    },
+    "AzurePassword": {
+      "type": "securestring"
+    },
     "DeploymentID": {
       "type": "string"
     },
@@ -33,6 +39,9 @@
     }
   },
   "variables": {
+    "cloudlabsCommon": "[concat(' -AzureUserName ', parameters('AzureUserName'), ' -AzurePassword ', parameters('AzurePassword'), ' -AzureTenantID ', variables('AzureTenantID'), ' -AzureSubscriptionID ', variables('AzureSubscriptionID'), ' -upadminPassword ', parameters('upadminPassword'), ' -DeploymentID ', parameters('DeploymentID'))]",
+    "AzureSubscriptionID": "[subscription().subscriptionId]",
+    "AzureTenantID": "[subscription().tenantId]",
     "networkSecurityGroupName": "cyberadmin-nsg",
     "virtualNetworkName": "cyberadmin-vnet",
     "addressPrefix": "10.0.0.0/24",
@@ -206,7 +215,7 @@
             "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1",
             "https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/script.ps1"
           ],
-          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File script.ps1', '  ', parameters('upadminPassword'))]"
+          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File script.ps1', '  ', variables('cloudlabsCommon'))]"
         }
       }
     }
