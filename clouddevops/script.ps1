@@ -1,3 +1,4 @@
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
 Param (
     [Parameter(Mandatory = $true)]
     [string]
@@ -19,7 +20,7 @@ Param (
     $upadminPassword
   )
 
-Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+
 [Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
 
