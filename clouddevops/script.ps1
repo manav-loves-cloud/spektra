@@ -1,6 +1,3 @@
-
-Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
-
 Param (
     [Parameter(Mandatory = $true)]
     [string]
