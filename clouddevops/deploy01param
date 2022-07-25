@@ -14,6 +14,12 @@
     "DeploymentID": {
       "value": "GET-DEPLOYMENT-ID"
     },
+    "AzureUserName": {
+      "value": "GET-AZUSER-UPN"
+    },
+    "AzurePassword": {
+      "value": "GET-AZUSER-PASSWORD"
+    },
     "location": {
       "value": "eastus2"
     }
