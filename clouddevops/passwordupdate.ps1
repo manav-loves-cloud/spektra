@@ -1,3 +1,4 @@
+Start-Transcript -Path C:\WindowsAzure\Logs\passup.txt -Append 
 . C:\LabFiles\passupdate.ps1
 $updatedpassword=$uppassword
 
