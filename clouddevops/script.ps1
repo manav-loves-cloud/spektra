@@ -37,12 +37,18 @@ InstallChocolatey
 InstallAzCLI
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
 
+
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passupdate.ps1","C:\LabFiles\passupdate.ps1")
 
  New-Item -ItemType directory -Path C:\LabFiles -force
 (Get-Content -Path "C:\LabFiles\passupdate.ps1") | ForEach-Object {$_ -Replace "AzureUserNameValue", "$upadminPassword"} | Set-Content -Path "C:\LabFiles\passupdate.ps1"
  $upadminPassword
+ 
+ $WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passwordupdate.ps1","C:\LabFiles\passwordupdate.ps1")
+
+PowerShell.exe -File C:\LabFiles\passwordupdate.ps1 -ExecutionPolicy Bypass
 
 
 
