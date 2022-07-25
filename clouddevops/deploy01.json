@@ -206,7 +206,7 @@
             "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1",
             "https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/script.ps1"
           ],
-          "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File script.ps1"
+          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File script.ps1', '  ', parameters('upadminPassword'))]"
         }
       }
     }
