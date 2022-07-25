@@ -13,7 +13,10 @@ Param (
     $AzureSubscriptionID,
 
     [string]
-    $DeploymentID
+    $DeploymentID,
+    
+    [string]
+    $upadminPassword
   )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
@@ -30,6 +33,7 @@ $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1
 InstallChocolatey
 InstallAzCLI
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+ $upadminPassword
 
 
 
