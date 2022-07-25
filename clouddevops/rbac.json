@@ -1,0 +1,24 @@
+{
+  "Name": "Spektra Custom RBAC",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Spektra Training Custom Role.",
+  "Actions": [
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Network/bastionHosts/*",
+    "Microsoft.Network/virtualNetworks/*",
+    "Microsoft.Resources/deployments/read",
+    "Microsoft.Resources/deployments/write",
+    "Microsoft.Resources/deployments/operations/read",
+    "Microsoft.Resources/deployments/validate/action",
+    "Microsoft.Network/publicIpAddresses/*"
+
+
+
+  ],
+  "NotActions": [
+
+
+
+  ]
+}
