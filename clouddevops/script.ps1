@@ -24,13 +24,19 @@ Param (
 [Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
 
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passupdate.ps1","C:\LabFiles\passupdate.ps1")
+
+
+
+
 #import common functions
 Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force
 
 $commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
-
+WindowsServerCommon
 InstallChocolatey
 InstallAzCLI
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
