@@ -14,7 +14,12 @@
         "description": "The name of the Azure Databricks workspace to create."
       }
     },
-
+    "upadminPassword": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure Databricks workspace to create."
+      }
+    },
     "DeploymentID": {
       "type": "string"
     },
@@ -220,7 +225,7 @@
     },
     "cyberadminPassword": {
       "type": "string",
-      "value": "[parameters('adminPassword')]"
+      "value": "[parameters('upadminPassword')]"
     }
   }
 }
