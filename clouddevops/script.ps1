@@ -24,9 +24,9 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
 
 #import common functions
-$path = pwd
-$path=$path.Path
-$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force
+
+$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
 
