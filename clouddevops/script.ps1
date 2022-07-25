@@ -116,3 +116,6 @@ Write-Host -fore Yellow =====================================================
  
 ## Cleanup of Variables 
 Remove-Variable * -ErrorAction SilentlyContinue
+
+
+Restart-Computer
