@@ -20,13 +20,15 @@ Param (
     $upadminPassword
   )
 
-
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append 
 [Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
 
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passupdate.ps1","C:\LabFiles\passupdate.ps1")
 
+ New-Item -ItemType directory -Path C:\LabFiles -force
+(Get-Content -Path "C:\LabFiles\passupdate.ps1") | ForEach-Object {$_ -Replace "AzureUserNameValue", "$upadminPassword"} | Set-Content -Path "C:\LabFiles\passupdate.ps1"
 
 
 
