@@ -48,7 +48,8 @@ $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/
  $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passwordupdate.ps1","C:\LabFiles\passwordupdate.ps1")
 
-PowerShell.exe -File C:\LabFiles\passwordupdate.ps1 -ExecutionPolicy Bypass
+cd C:\LabFiles
+.\passwordupdate.ps1
 
 
 
