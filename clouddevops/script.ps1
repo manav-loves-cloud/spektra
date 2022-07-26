@@ -48,11 +48,11 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 
 Set-PSRepository -Name "PSGallery" -Installationpolicy Trusted
 
-Install-Module -Name Az -AllowClobber -Scope AllUsers -Force
+Install-Module -Name Az.Compute -AllowClobber -Scope AllUsers -Force
 
 Start-Sleep -s 10
 
-Import-Module -Name Az
+Import-Module -Name Az.Compute
 
 Start-Sleep -s 10
 
