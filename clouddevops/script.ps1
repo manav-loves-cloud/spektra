@@ -42,91 +42,17 @@ $upadminPassword
 Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force
 
 
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passupdate.ps1","C:\LabFiles\passupdate.ps1")
 
+ New-Item -ItemType directory -Path C:\LabFiles -force
+(Get-Content -Path "C:\LabFiles\passupdate.ps1") | ForEach-Object {$_ -Replace "AzureUserNameValue", "$upadminPassword"} | Set-Content -Path "C:\LabFiles\passupdate.ps1"
+ $upadminPassword
+ 
+ $WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/clouddevops/passwordupdate.ps1","C:\LabFiles\passwordupdate.ps1")
 
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-
-Set-PSRepository -Name "PSGallery" -Installationpolicy Trusted
-
-Install-Module -Name Az.Compute -AllowClobber -Scope AllUsers -Force
-
-Start-Sleep -s 10
-
-Import-Module -Name Az.Compute
-
-Start-Sleep -s 10
-
-
-
-
-
-
-CD C:\LabFiles
-
-
-
-$credsfilepath = ".\AzureCreds.txt"
-
-
-
-$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
-
-
-
-$AzureUserName = "$($creds.AzureUserName)"
-
-
-
-$AzurePassword = "$($creds.AzurePassword)"
-
-
-
-$DeploymentID = "$($creds.DeploymentID)"
-
-
-
-$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
-
-
-
-$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
-
-
-
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
-
-
-
-$subscriptionId = $AzureSubscriptionID
-
-
-
-Connect-AzAccount -Credential $cred | Out-Null
-
-
-
-$newPassword= $upadminPassword
-$vmName = 'CYBERND0301'
-
-$resourceGroupName = 'cyber-'+$DeploymentID
-
-$vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
-
-#$UserName= 'demouser'
-
-$location= $vm.Location
-
-
-
-
-$password = ConvertTo-SecureString $newPassword -AsPlainText -Force
-
-$credential = New-Object System.Management.Automation.PSCredential("cyberadmin", $password)
-
-
-
-
-Set-AzVMAccessExtension -Credential $credential -Location $location -Name 'PasswordUpdate' -ResourceGroupName $resourceGroupName -TypeHandlerVersion '2.4' -VMName $vmName
+Powershell.exe -File C:\LabFiles\passwordupdate.ps1
 
 
  
