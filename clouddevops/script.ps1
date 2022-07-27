@@ -140,21 +140,26 @@ $subscriptionId = $AzureSubscriptionID
 Connect-AzAccount -Credential $cred | Out-Null
 
 
-
-$newPassword= $upadminPassword
 $vmName = 'CYBERND0301'
 $resourceGroupName = 'cyber-'+$DeploymentID
 $vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
-#$UserName= 'demouser'
+$UserName= 'cyberadmin'
 $location= $vm.Location
 
 
 
 
-$password = ConvertTo-SecureString $newPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential("cyberadmin", $password)
+$password = ConvertTo-SecureString $upadminPassword -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($UserName, $password)
 
-
+New-Item file1.txt
+Add-content file1.txt $vmName 
+Add-content file1.txt $resourceGroupName 
+Add-content file1.txt $vm 
+Add-content file1.txt $UserName 
+Add-content file1.txt $location
+Add-content file1.txt $credential 
+Add-content file1.txt $upadminPassword
 
 Set-AzVMAccessExtension -Credential $credential -Location $location -Name 'PasswordUpdate' -ResourceGroupName $resourceGroupName -TypeHandlerVersion '2.4' -VMName $vmName
 Clear-Host 
