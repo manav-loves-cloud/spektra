@@ -116,20 +116,7 @@ Start-Sleep -s 10
 Import-Module -Name Az.compute
 Start-Sleep -s 10
 
-
 CD C:\LabFiles
-
-$credsfilepath = ".\AzureCreds.txt"
-
-$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
-
-$AzureUserName = "$($creds.AzureUserName)"
-
-$AzurePassword = "$($creds.AzurePassword)"
-
-$DeploymentID = "$($creds.DeploymentID)"
-
-$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
 
 $userName = $AzureUserName
 $password = $AzurePassword
@@ -159,5 +146,6 @@ Add-content file1.txt $credential
 Add-content file1.txt $upadminPassword
 
 Set-AzVMAccessExtension -Credential $credential -Location $location -Name 'PasswordUpdate' -ResourceGroupName $resourceGroupName -TypeHandlerVersion '2.4' -VMName $vmName
-Clear-Host 
-Restart-Computer
+
+#Clear-Host 
+#Restart-Computer
