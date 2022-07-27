@@ -1,4 +1,4 @@
-
+Set-StrictMode -Version Latest 
 Param (
     [Parameter(Mandatory = $true)]
     [string]
