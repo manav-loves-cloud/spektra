@@ -131,26 +131,23 @@ $DeploymentID = "$($creds.DeploymentID)"
 
 $AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
 
-$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
-
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
+$userName = $AzureUserName
+$password = $AzurePassword
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $userName, $SecurePassword
 
 $subscriptionId = $AzureSubscriptionID 
 
-Connect-AzAccount -Credential $cred | Out-Null
-
+Connect-AzAccount -Credential $cred 
 
 $vmName = 'CYBERND0301'
-$resourceGroupName = 'cyber-'+$DeploymentID
+$resourceGroupName = 'cyber-' + $DeploymentID
 $vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
 $UserName= 'cyberadmin'
 $location= $vm.Location
 
-
-
-
-$password = ConvertTo-SecureString $upadminPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($UserName, $password)
+$secureVMPassword = $upadminPassword | ConvertTo-SecureString -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($UserName, $secureVMPassword)
 
 New-Item file1.txt
 Add-content file1.txt $vmName 
