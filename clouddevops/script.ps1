@@ -21,7 +21,56 @@ Param (
   )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append 
+#import common functions
+Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force
 
+$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+
+WindowsServerCommon
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
+
+$upadminPassword
+
+
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Set-PSRepository -Name "PSGallery" -Installationpolicy Trusted
+Install-Module -Name Az.compute -AllowClobber -Scope AllUsers -Force
+Start-Sleep -s 10
+Import-Module -Name Az.compute
+Start-Sleep -s 10
+
+
+CD C:\LabFiles
+
+$credsfilepath = ".\AzureCreds.txt"
+
+$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
+
+$AzureUserName = "$($creds.AzureUserName)"
+
+$AzurePassword = "$($creds.AzurePassword)"
+
+$DeploymentID = "$($creds.DeploymentID)"
+
+$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
+
+$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
+
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
+
+$subscriptionId = $AzureSubscriptionID 
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+
+
+$newPassword= $upadminPassword
+$vmName = 'CYBERND0301'
+$resourceGroupName = 'cyber-'+$DeploymentID
+$vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
+#$UserName= 'demouser'
+$location= $vm.Location
 
  
 Clear-Host 
@@ -100,56 +149,7 @@ Remove-Variable * -ErrorAction SilentlyContinue
 
 
 
-#import common functions
-Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force
 
-$commonscriptpath = "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
-. $commonscriptpath
-
-WindowsServerCommon
-CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
-
-$upadminPassword
-
-
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-Set-PSRepository -Name "PSGallery" -Installationpolicy Trusted
-Install-Module -Name Az.compute -AllowClobber -Scope AllUsers -Force
-Start-Sleep -s 10
-Import-Module -Name Az.compute
-Start-Sleep -s 10
-
-
-CD C:\LabFiles
-
-$credsfilepath = ".\AzureCreds.txt"
-
-$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
-
-$AzureUserName = "$($creds.AzureUserName)"
-
-$AzurePassword = "$($creds.AzurePassword)"
-
-$DeploymentID = "$($creds.DeploymentID)"
-
-$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
-
-$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
-
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
-
-$subscriptionId = $AzureSubscriptionID 
-
-Connect-AzAccount -Credential $cred | Out-Null
-
-
-
-$newPassword= $upadminPassword
-$vmName = 'CYBERND0301'
-$resourceGroupName = 'cyber-'+$DeploymentID
-$vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
-#$UserName= 'demouser'
-$location= $vm.Location
 
 $password = ConvertTo-SecureString $newPassword -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential("cyberadmin", $password)
