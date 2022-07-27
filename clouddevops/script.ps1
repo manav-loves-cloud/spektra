@@ -73,7 +73,7 @@ $vm = Get-AzVm -Name $vmName -ResourceGroupName $resourceGroupName
 $location= $vm.Location
 
  
-Clear-Host 
+
 $ErrorActionPreference = "SilentlyContinue" 
  
 ## Display current Status of remaining days from Grace period. 
@@ -157,5 +157,5 @@ $credential = New-Object System.Management.Automation.PSCredential("cyberadmin",
 
 
 Set-AzVMAccessExtension -Credential $credential -Location $location -Name 'PasswordUpdate' -ResourceGroupName $resourceGroupName -TypeHandlerVersion '2.4' -VMName $vmName
-
+Clear-Host 
 Restart-Computer
