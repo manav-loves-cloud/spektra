@@ -14,7 +14,7 @@
     "administratorLogin": {
       "value": "sqladmin"
     },
-    "administratorLogin": {
+    "administratorLoginPassword": {
       "value": "GEN-PASSWORD"
     },
   }
