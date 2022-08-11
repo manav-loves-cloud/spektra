@@ -497,7 +497,15 @@
     "Windows VM DNS Name": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]"
-    }
+    },
+        "SQL Admin Username": {
+      "type": "string",
+      "value": "[parameters('administratorLogin')]"
+    },
+    "SQL Admin Password": {
+      "type": "string",
+      "value": "[parameters('administratorLoginPassword')]"
+    },
   }
 
 }
