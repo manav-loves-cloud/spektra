@@ -82,8 +82,8 @@ $storagename = "veeamstr"+ $deployId
 $ctx=(Get-AzStorageAccount -ResourceGroupName veeam -Name $storagename).Context
 
 ##enabling service end point to virtual network
-Get-AzVirtualNetwork -Name veeamvm-vnet -ResourceGroupName veeam | Set-AzVirtualNetworkSubnetConfig -Name default -AddressPrefix "10.1.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
-Get-AzVirtualNetwork -Name veeamvm-vnet -ResourceGroupName veeam | Set-AzVirtualNetworkSubnetConfig -Name default -AddressPrefix "10.1.0.0/24" -ServiceEndpoint "Microsoft.Sql" | Set-AzVirtualNetwork
+Get-AzVirtualNetwork -Name veeamvm-vnet -ResourceGroupName veeam | Set-AzVirtualNetworkSubnetConfig -Name default -AddressPrefix "10.1.0.0/24" -ServiceEndpoint "Microsoft.Storage","Microsoft.Sql" | Set-AzVirtualNetwork
+
 
 
 ##creating the storage container
