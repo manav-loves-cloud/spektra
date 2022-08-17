@@ -16,7 +16,8 @@
                     "Microsoft.Resources/subscriptions/resourceGroups/read",
                     "Microsoft.ServiceBus/namespaces/*",
                     "Microsoft.Sql/servers/*",
-                    "Microsoft.Storage/storageAccounts/*"
+                    "Microsoft.Storage/storageAccounts/*",
+                     "Microsoft.Compute/disks/*"
                 ],
     "NotActions":  [
 
