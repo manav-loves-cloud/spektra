@@ -44,10 +44,10 @@
 				    "field": "type",
 				    "like": "Microsoft.Storage/storageAccounts/*"
 				    },
-				   {  
-                     "field":"type",'
-                     "like":"Microsoft.Compute/disks/*"
-                  },
+		  (  
+                                     "field":"type",
+                                     "like":"Microsoft.Compute/disks/*"
+                                     },
                     {
 				    "field": "type",
 				    "in": ["Microsoft.Compute/disks","Microsoft.Compute/snapshots", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql/servers", "Microsoft.Storage/storageAccounts"]
