@@ -44,7 +44,7 @@
 				    "field": "type",
 				    "like": "Microsoft.Storage/storageAccounts/*"
 				    },
-		  (  
+				  {  
                                      "field":"type",
                                      "like":"Microsoft.Compute/disks/*"
                                      },
