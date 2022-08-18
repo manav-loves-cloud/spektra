@@ -48,9 +48,14 @@
                                     "field":"type",
                                     "like":"Microsoft.Compute/disks/*"
                                     },
+          {  
+                                    "field":"type",
+                                    "like":"Microsoft.Sql/servers/databases/write"
+                                    },
+         
                    {
            "field": "type",
-           "in": ["Microsoft.Compute/disks","Microsoft.Compute/snapshots", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql/servers", "Microsoft.Storage/storageAccounts"]
+           "in": ["Microsoft.Sql/servers/databases/write","Microsoft.Compute/disks","Microsoft.Compute/snapshots", "Microsoft.Compute/virtualMachines", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/virtualNetworks", "Microsoft.ServiceBus/namespaces", "Microsoft.Sql/servers", "Microsoft.Storage/storageAccounts"]
            }
                ]
      }
