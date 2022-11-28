@@ -30,6 +30,11 @@ Param (
  )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+
+
+$adminUsername="demouser"
+net user $adminUsername $adminPassword
+
 #Import Common Functions
 $path = pwd
 $path=$path.Path
