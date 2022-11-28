@@ -14,29 +14,37 @@
         "description": "The name of the Azure Databricks workspace to create."
       }
     },
-    "workspaceName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the Azure Databricks workspace to create."
-      }
-    },
     "tenantName": {
       "type": "string",
       "metadata": {
         "description": "FQDN."
       }
     },
-    "azureUsername": {
+    "AzureUserName": {
       "type": "string",
       "metadata": {
         "description": "Azure UserName."
       }
     },
-    "azurePassword": {
+    "AzurePassword": {
       "type": "string",
       "metadata": {
         "description": "Azure User Password."
       }
+    },
+     "ODLID": {
+      "type": "string"
+    },
+    "DeploymentID": {
+      "type": "string"
+    },
+    "InstallCloudLabsShadow": {
+      "type": "string",
+      "defaultValue": "yes",
+      "allowedValues": [
+        "yes",
+        "no"
+      ]
     },
     "location": {
       "type": "string",
@@ -47,6 +55,7 @@
     }
   },
   "variables": {
+    "cloudlabsCommon": "[concat(' -AzureUserName ', parameters('AzureUserName'), ' -AzurePassword ', parameters('AzurePassword'), ' -AzureTenantID ', variables('AzureTenantID'), ' -AzureSubscriptionID ', variables('AzureSubscriptionID'), ' -ODLID ', parameters('ODLID'), ' -DeploymentID ', parameters('DeploymentID'),' -adminPassword ', parameters('adminPassword'),' -InstallCloudLabsShadow ', parameters('InstallCloudLabsShadow'))]",
     "networkSecurityGroupName": "labvm-nsg",
     "virtualNetworkName": "labvm-vnet",
     "addressPrefix": "10.0.0.0/24",
@@ -59,9 +68,8 @@
     "virtualMachineName": "labvm",
     "virtualMachineSize": "Standard_B2s",
     "labVmStorageAccountType": "Standard_LRS",
-    "azureSubscriptionID": "[subscription().subscriptionId]",
-    "keyVaultTenant": "[subscription().tenantId]",
-    "subscriptionid": "[subscription().subscriptionId]"
+    "AzureTenantID": "[subscription().tenantId]",
+    "AzureSubscriptionID": "[subscription().subscriptionId]"
   },
   "resources": [
     {
@@ -222,9 +230,9 @@
         "settings": {
           "fileUris": [
             "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1",
-            "https://experienceazure.blob.core.windows.net/templates/udacity-nanodegree/scripts/script-04.ps1"
+            "https://raw.githubusercontent.com/bhavangowdan/spektra/main/enterprisesecurity/psscript1.ps1"
           ],
-          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File udacity-nanodegree/scripts/script-04.ps1',' ',parameters('tenantName'),' ',variables('subscriptionid'),' ',parameters('azureUsername'),' ',parameters('azurePassword'),' ',parameters('workspaceName'))]"
+          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File psscript.ps1', variables('cloudlabsCommon'))]"
         }
       }
     }
