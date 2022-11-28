@@ -19,7 +19,7 @@ Param (
     $DeploymentID,
     
     [string]
-    $tenantName
+    $tenantName,
 
     [string]
     $InstallCloudLabsShadow,
