@@ -4,15 +4,9 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
-      "metadata": {
-        "description": "The name of the Azure Databricks workspace to create."
-      }
     },
     "adminPassword": {
       "type": "string",
-      "metadata": {
-        "description": "The name of the Azure Databricks workspace to create."
-      }
     },
     "tenantName": {
       "type": "string",
