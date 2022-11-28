@@ -19,7 +19,7 @@ Param (
     $DeploymentID,
     
     [string]
-    $domain
+    $tenantName
 
     [string]
     $InstallCloudLabsShadow,
@@ -78,7 +78,7 @@ $WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates
 $WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/udacity-nanodegree/scripts/creds.txt","C:\Packages\creds.txt")
 
 
-(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "domainValue", "$domain"} | Set-Content -Path "$FileDir\creds.txt"
+(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "domainValue", "$tenantName"} | Set-Content -Path "$FileDir\creds.txt"
 (Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "usernamevalue", "$AzureUserName"} | Set-Content -Path "$FileDir\creds.txt"
 (Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "passwordvalue", "$AzurePassword"} | Set-Content -Path "$FileDir\creds.txt"
 (Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "SubscriptionIdValue", "$AzureSubscriptionID"} | Set-Content -Path "$FileDir\creds.txt"
