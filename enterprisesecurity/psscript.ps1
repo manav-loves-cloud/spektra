@@ -15,7 +15,7 @@ param(
  )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
-
+$adminPassword
 $adminUsername= "demouser"
 net user $adminUsername $adminPassword
 
