@@ -1,21 +1,27 @@
 
 param(
-	    [Parameter(Mandatory=$true)]
-        [String]$domain,
         [Parameter(Mandatory=$true)]
-        [String]$subId,
-        [Parameter(Mandatory=$true)]
-        [String]$username,
-		[Parameter(Mandatory=$true)]
-        [String]$password,
-		[Parameter(Mandatory=$true)]
-        [String]$deployID,
-         [String]$AzureTenantID
-         [String]$adminPassword
+        [String]
+        $subId,
+        
+        [String]
+        $username,
+		
+        [String]
+        $password,
+	
+        [String]
+        $deployID,
+         
+        [String]
+        $AzureTenantID,
+
+        [string]
+        $adminPassword
  )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
-$adminPassword
+
 $adminUsername= "demouser"
 net user $adminUsername $adminPassword
 
@@ -31,3 +37,5 @@ InstallChocolatey
 WindowsServerCommon
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 CreateCredFile $username $password $AzureTenantID $subId $deployID
+
+
