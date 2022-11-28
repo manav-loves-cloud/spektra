@@ -1,14 +1,32 @@
-param(
-	    [Parameter(Mandatory=$true)]
-        [String]$domain,
-        [Parameter(Mandatory=$true)]
-        [String]$subId,
-        [Parameter(Mandatory=$true)]
-        [String]$username,
-		[Parameter(Mandatory=$true)]
-        [String]$password,
-		[Parameter(Mandatory=$true)]
-        [String]$deployID
+Param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $AzureUserName,
+
+    [string]
+    $AzurePassword,
+
+    [string]
+    $AzureTenantID,
+
+    [string]
+    $AzureSubscriptionID,
+
+    [string]
+    $ODLID,
+
+    [string]
+    $DeploymentID,
+    
+    [string]
+    $domain
+
+    [string]
+    $InstallCloudLabsShadow,
+    
+    [string]
+    $adminPassword
+    
  )
 
 Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
@@ -56,13 +74,13 @@ $WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates
 
 
 (Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "domainValue", "$domain"} | Set-Content -Path "$FileDir\creds.txt"
-(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "usernamevalue", "$username"} | Set-Content -Path "$FileDir\creds.txt"
-(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "passwordvalue", "$password"} | Set-Content -Path "$FileDir\creds.txt"
-(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "SubscriptionIdValue", "$subId"} | Set-Content -Path "$FileDir\creds.txt"
-(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "deployvalue", "$deployID"} | Set-Content -Path "$FileDir\creds.txt"
+(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "usernamevalue", "$AzureUserName"} | Set-Content -Path "$FileDir\creds.txt"
+(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "passwordvalue", "$AzurePassword"} | Set-Content -Path "$FileDir\creds.txt"
+(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "SubscriptionIdValue", "$AzureSubscriptionID"} | Set-Content -Path "$FileDir\creds.txt"
+(Get-Content -Path "$FileDir\creds.txt") | ForEach-Object {$_ -Replace "deployvalue", "$DeploymentID"} | Set-Content -Path "$FileDir\creds.txt"
 
 $adminUsername="demouser"
-$adminPassword="Password123!"
+
 
 
 
