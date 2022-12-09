@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "The username for the administrator account of the new VM and domain"
-            }
-          },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
@@ -105,6 +99,9 @@
             }
         }
     },
+     "variables": {
+    "adminUsername": "Student"
+     },
     "resources": [
         {
             "type": "Microsoft.Compute/availabilitySets",
@@ -190,7 +187,7 @@
                 },
                 "osProfile": {
                     "computerName": "[parameters('virtualMachineName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminUsername": "[variables('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
@@ -249,7 +246,7 @@
                             "Properties": {
                                 "DomainName": "[parameters('domainName')]",
                                 "AdminCreds": {
-                                    "UserName": "[parameters('adminUsername')]",
+                                    "UserName": "[variables('adminUsername')]",
                                     "Password": "PrivateSettingsRef:AdminPassword"
                                 }
                             }
