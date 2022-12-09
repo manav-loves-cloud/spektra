@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "Student"
+    },
+    "adminPassword": {
+      "value": "Pa55w.rd1234"
+    },
+    "domainName": {
+      "value": "adatum.com"
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "_artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/active-directory/active-directory-new-domain/"
+    },
+    "_artifactsLocationSasToken": {
+      "value": null
+    },
+    "location": {
+      "value": "[resourceGroup().location]"
+    },
+    "virtualMachineName": {
+      "value": "adVM"
+    },
+    "virtualNetworkName": {
+      "value": "adVNET"
+    },
+    "virtualNetworkAddressRange": {
+      "value": "10.0.0.0/16"
+    },
+    "networkInterfaceName": {
+      "value": "adNic"
+    },
+    "privateIPAddress": {
+      "value": "10.0.0.4"
+    },
+    "subnetName": {
+      "value": "adSubnet"
+    },
+    "subnetRange": {
+      "value": "10.0.0.0/24"
+    },
+    "availabilitySetName": {
+      "value": "adAvailabiltySet"
+    }
+  }
+}
