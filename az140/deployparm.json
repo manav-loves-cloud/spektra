@@ -1,7 +1,10 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "adminUsername": {
+      "value": "Student"
+    },
     "adminPassword": {
       "value": "Pa55w.rd1234"
     },
@@ -15,34 +18,34 @@
       "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/active-directory/active-directory-new-domain/"
     },
     "_artifactsLocationSasToken": {
-      "value": null
+      "value": ""
     },
     "location": {
       "value": "[resourceGroup().location]"
     },
     "virtualMachineName": {
-      "value": "adVM"
+      "value": "az140-dc-vm11"
     },
     "virtualNetworkName": {
-      "value": "adVNET"
+      "value": "az140-adds-vnet11"
     },
     "virtualNetworkAddressRange": {
       "value": "10.0.0.0/16"
     },
     "networkInterfaceName": {
-      "value": "adNic"
+      "value": "az140-dc-vm11-nic"
     },
     "privateIPAddress": {
       "value": "10.0.0.4"
     },
     "subnetName": {
-      "value": "adSubnet"
+      "value": "adds-subnet"
     },
     "subnetRange": {
       "value": "10.0.0.0/24"
     },
     "availabilitySetName": {
-      "value": "adAvailabiltySet"
+      "value": "az140-dc-advset11"
     }
   }
 }
