@@ -21,7 +21,7 @@
       "value": ""
     },
     "location": {
-      "value": "[resourceGroup().location]"
+      "value": "[deployment().location]"
     },
     "virtualMachineName": {
       "value": "az140-dc-vm11"
