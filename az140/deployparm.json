@@ -21,7 +21,7 @@
       "value": ""
     },
     "location": {
-      "value": "[deployment().location]"
+      "value": "eastus"
     },
     "virtualMachineName": {
       "value": "az140-dc-vm11"
