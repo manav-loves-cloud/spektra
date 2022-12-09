@@ -20,9 +20,6 @@
     "_artifactsLocationSasToken": {
       "value": ""
     },
-    "location": {
-      "value": "[resourceGroup().location]"
-    },
     "virtualMachineName": {
       "value": "az140-dc-vm11"
     },
