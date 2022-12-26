@@ -1,0 +1,21 @@
+[
+    {
+      "Name": "Module 03B: Implement CI with Azure Pipelines and GitHub Actions",
+      "Language": "English",
+      "BaseURL": "https://github.com/CloudLabs-MOC/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/tree/stage",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/stage/Instructions/Labs/LabIntro.md",
+          "Order": 1
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/bhavangowdan/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/12-22-updates/Instructions/Labs/AZ400_M03_L07_Implementing_GitHub_Actions_for_CI_CD.md",
+          "Order": 2
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/bhavangowdan/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/12-22-updates/Instructions/Labs/AZ400_M03_L08_Deploying_Docker_containers_to_Azure_App_Service_web_apps.md",
+          "Order": 3
+        }
+      ]
+    }
+  ]
