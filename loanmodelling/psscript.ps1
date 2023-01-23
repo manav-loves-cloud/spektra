@@ -106,7 +106,7 @@ $rgLocation = (Get-AzResourceGroup -Name $rgName).Location
 
 $srcUrl = "https://experienceazure.blob.core.windows.net/input?sp=racwdli&st=2023-01-23T08:16:53Z&se=2028-01-30T16:16:53Z&spr=https&sv=2021-06-08&sr=c&sig=QQSqnPuBUHWTp2eh7Yb4PwNEtWoerWGsJgzll%2BIE4jQ%3D"
 
-           
+$destContext = $storage.Context           
 $resources = $null
 
 
