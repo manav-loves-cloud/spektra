@@ -414,7 +414,8 @@
       "apiVersion": "2019-07-01",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',variables('vmname'))]"
+        "[concat('Microsoft.Compute/virtualMachines/',variables('vmname'))]",
+        "[concat('Microsoft.Storage/storageAccounts/',variables('blobStorageAccountName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Compute",
