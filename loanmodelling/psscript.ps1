@@ -121,6 +121,20 @@ $destUrl
 C:\LabFiles\azcopy.exe copy $srcUrl $destUrl --recursive
 
 
+#Assign contributor role for the Service Principal on the Machine Learning workspace
+$rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
+$machinelearningAccounts = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.MachineLearningServices/workspaces"
+$machinelearningname = $machinelearningAccounts | Where-Object { $_.Name -like 'loan*' }
+$machinelearningaccountname=$machinelearningname.name
+
+
+$servicePrincipalDisplayName = "https://odl_user_sp_$DeploymentID"
+$servicePrincipal = Get-AzADServicePrincipal -DisplayName $servicePrincipalDisplayName
+$id =$servicePrincipal.id
+
+New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
+
+
 
 
 
