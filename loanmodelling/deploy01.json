@@ -415,7 +415,8 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/',variables('vmname'))]",
-        "[concat('Microsoft.Storage/storageAccounts/',variables('blobStorageAccountName'))]"
+        "[concat('Microsoft.Storage/storageAccounts/',variables('blobStorageAccountName'))]",
+        "[concat('Microsoft.MachineLearningServices/workspaces/',variables('workspaceName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Compute",
