@@ -57,3 +57,75 @@ Start-Process -FilePath "C:\LabFiles\PBIDesktop_x64.exe" -ArgumentList '-quiet',
 
 Set-ExecutionPolicy -ExecutionPolicy bypass -Force
 
+
+#download az-copy
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SpektraSystems/CloudLabs-Azure/master/azure-synapse-analytics-workshop-400/artifacts/setup/azcopy.exe" -OutFile "C:\labfiles\azcopy.exe"
+
+
+#install the AZ module
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Set-PSRepository -Name "PSGallery" -Installationpolicy Trusted
+Install-Module -Name Az -AllowClobber -Scope AllUsers -Force
+
+#connect to Az account
+CD C:\LabFiles
+
+$credsfilepath = ".\AzureCreds.txt"
+$creds = Get-Content $credsfilepath | Out-String | ConvertFrom-StringData
+$AzureUserName = "$($creds.AzureUserName)"
+$AzurePassword = "$($creds.AzurePassword)"
+$DeploymentID = "$($creds.DeploymentID)"
+$AzureSubscriptionID = "$($creds.AzureSubscriptionID)"
+$passwd = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $AzureUserName, $passwd
+$subscriptionId = $AzureSubscriptionID 
+
+Connect-AzAccount -Credential $cred | Out-Null
+
+#fetching the storage account name
+$rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
+$storageAccounts = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Storage/storageAccounts"
+$storageName = $storageAccounts | Where-Object { $_.Name -like 'sba*' }
+$storageaccountname=$storagename.name
+$storage = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storageName.Name
+$storageContext = $storage.Context
+
+#create the conatiners
+New-AzStorageContainer -Name "input" -Context $storageContext -Permission Blob
+New-AzStorageContainer -Name "output" -Context $storageContext -Permission Blob
+New-AzStorageContainer -Name "testinput" -Context $storageContext -Permission Blob
+New-AzStorageContainer -Name "testoutput" -Context $storageContext -Permission Blob
+New-AzStorageContainer -Name "testresult" -Context $storageContext -Permission Blob
+
+
+#storage copy
+$srcUrl = $null
+$rgLocation = (Get-AzResourceGroup -Name $rgName).Location
+          
+
+$srcUrl = "https://experienceazure.blob.core.windows.net/input?sp=racwdli&st=2023-01-23T08:16:53Z&se=2028-01-30T16:16:53Z&spr=https&sv=2021-06-08&sr=c&sig=QQSqnPuBUHWTp2eh7Yb4PwNEtWoerWGsJgzll%2BIE4jQ%3D"
+
+           
+$resources = $null
+
+
+$startTime = Get-Date
+$endTime = $startTime.AddDays(2)
+$destSASToken = New-AzStorageContainerSASToken  -Context $destContext -Container "input" -Permission rwd -StartTime $startTime -ExpiryTime $endTime
+$destUrl = $destContext.BlobEndPoint + "input" + $destSASToken
+
+$srcUrl 
+$destUrl
+
+C:\LabFiles\azcopy.exe copy $srcUrl $destUrl --recursive
+
+
+
+
+
+
+
+
+
+
