@@ -42,33 +42,34 @@
         }
       }
     },
-    {
-      "apiVersion": "2018-06-01",
-      "type": "Microsoft.Compute/disks",
-      "name": "[variables('osdiskname')]",
-      "location": "[variables('location')]",
-      "properties": {
-        "creationData": {
-          "createOption": "Copy",
-          "sourceResourceId": "[variables('sourceSnapshotResourceId')]"
-        },
-        "diskSizeGB": 1024,
-        "osType": "Windows",
-        "diskIOPSReadWrite": 7500,
-        "diskMBpsReadWrite": 250,
-        "encryption": {
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2022-07-02",
+            "name": "CCSE-OSDisk",
+            "location": "westus2",
+            "sku": {
+                "name": "Premium_LRS",
+                "tier": "Premium"
+            },
+            "properties": {
+                "osType": "Windows",
+                "creationData": {
+                    "createOption": "Copy",
+                    "sourceResourceId": "[variables('sourceSnapshotResourceId')]"
+                },
+                "diskSizeGB": 512,
+                "diskIOPSReadWrite": 7500,
+                "diskMBpsReadWrite": 250,
+                "encryption": {
                     "type": "EncryptionAtRestWithPlatformKey"
                 },
-        "networkAccessPolicy": "AllowAll",
-        "publicNetworkAccess": "Enabled",
-        "dataAccessAuthMode": "None",
-        "diskState": "Reserved",
-        "tier": "P40"
-      },
-      "sku": {
-        "name": "[variables('accountType')]"
-      }
-    },
+                "networkAccessPolicy": "AllowAll",
+                "publicNetworkAccess": "Enabled",
+                "dataAccessAuthMode": "None",
+                "diskState": "Reserved",
+                "tier": "P40"
+            }
+        },
     {
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('virtualNetworkName')]",
