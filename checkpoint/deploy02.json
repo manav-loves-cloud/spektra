@@ -52,8 +52,18 @@
           "createOption": "Copy",
           "sourceResourceId": "[variables('sourceSnapshotResourceId')]"
         },
-        "diskSizeGB": 2048,
-        "osType": "Windows"
+        "diskSizeGB": 1024,
+        "osType": "Windows",
+        "diskIOPSReadWrite": 7500,
+        "diskMBpsReadWrite": 250,
+        "encryption": {
+                    "type": "EncryptionAtRestWithPlatformKey"
+                },
+        "networkAccessPolicy": "AllowAll",
+        "publicNetworkAccess": "Enabled",
+        "dataAccessAuthMode": "None",
+        "diskState": "Reserved",
+        "tier": "P40"
       },
       "sku": {
         "name": "[variables('accountType')]"
