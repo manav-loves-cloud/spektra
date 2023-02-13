@@ -47,7 +47,7 @@
     "networkInterfaceName": "[concat(variables('virtualMachineName'), '-nic')]",
     "networkSecurityGroupName": "[concat(variables('virtualMachineName'), '-nsg')]",
     "publicIpAddressName": "[concat(variables('virtualMachineName'), '-pip')]",
-    "publicIpAddressDNSName": "[concat('ccse-host-', parameters('DID'))]",
+    "publicIpAddressDNSName": "[concat('ccse-host-', parameters('DeploymentID'))]",
     "subnetName": "subnet1",
     "location": "[resourceGroup().location]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
