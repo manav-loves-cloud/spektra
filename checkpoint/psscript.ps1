@@ -61,7 +61,7 @@ $diskName='CCSE-OSDisk'
 $performanceTier='P40'
  
 $diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
-
+Set-AzContext -Subscription $AzureSubscriptionID
 Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
 
 # Run Imported functions from cloudlabs-windows-functions.ps1
