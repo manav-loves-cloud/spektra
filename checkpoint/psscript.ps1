@@ -42,9 +42,6 @@ $path=$path.Path
 $commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
 . $commonscriptpath
 
-# Run Imported functions from cloudlabs-windows-functions.ps1
-Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
-
 #Install AZ Poweshell Module
 InstallAzPowerShellModule
 
@@ -66,6 +63,11 @@ $performanceTier='P40'
 $diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
 
 Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
+
+# Run Imported functions from cloudlabs-windows-functions.ps1
+Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+
+
 
 
 Stop-Transcript
