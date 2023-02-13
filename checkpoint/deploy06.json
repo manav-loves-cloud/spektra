@@ -25,8 +25,7 @@
     "location": "[resourceGroup().location]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
     "accountType": "Premium_LRS",
-    "osdiskname": "CCSE-OSDisk",
-    "sourceSnapshotResourceId": "/subscriptions/2a6138c3-63dc-4dc8-8c98-2de1fc386897/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/snapshots/ccse-r81.10-1tb-v17-westus2-beforesysprep"
+    "osdiskname": "CCSE-OSDisk"
   },
   "resources": [
     {
