@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "demouser"
+      "value": "admin"
     },
     "adminPassword": {
-      "value": "Password.1!!"
+      "value": "Chkp!234"
     },
     "AzureUserName": {
       "value": "GET-AZUSER-UPN"
@@ -18,7 +18,7 @@
       "value": "trainer"
     },
     "trainerUserPassword": {
-      "value": "Password.1"
+      "value": "Password.!!1"
     },
     "ODLID": {
       "value": "GET-ODL-ID"
