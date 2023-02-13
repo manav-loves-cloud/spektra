@@ -55,6 +55,8 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 Connect-AzAccount -Credential $cred | Out-Null
 
+Set-AzContext -Subscription $AzureSubscriptionID
+
 $rgname= "ODL-ccser8110-"+ $DeploymentID
 
 $resourceGroupName=$rgname
