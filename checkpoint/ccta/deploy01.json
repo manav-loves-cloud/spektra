@@ -50,7 +50,7 @@
     {
       "type": "Microsoft.Compute/disks",
       "apiVersion": "2022-07-02",
-      "name": "CCSA-OSDisk",
+      "name": "CCTA-OSDisk",
       "location": "[variables('location')]",
       "sku": {
           "name": "Premium_LRS",
