@@ -1,0 +1,237 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "DID": {
+        "type": "string"
+      },
+      "trainerUserName": {
+          "type": "string"
+        },
+      "trainerUserPassword": {
+          "type": "string"
+        }
+    },
+    "variables": {
+      "virtualNetworkName": "CCTE-vNet",
+      "virtualMachineName": "CCTE-Host",
+      "Enable-CloudLabsEmbeddedShadow": "[concat(' -vmAdminUsername ', ' admin ' , ' -trainerUserName ', parameters('trainerUserName'), ' -trainerUserPassword ', parameters('trainerUserPassword'))]",
+      "virtualMachineSize": "Standard_D32s_v3",
+      "networkInterfaceName": "[concat(variables('virtualMachineName'), '-nic')]",
+      "networkSecurityGroupName": "[concat(variables('virtualMachineName'), '-nsg')]",
+      "publicIpAddressName": "[concat(variables('virtualMachineName'), '-pip')]",
+      "publicIpAddressDNSName": "[concat('ccte-host-', parameters('DID'))]",
+      "subnetName": "default",
+      "location": "[resourceGroup().location]",
+      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
+      "accountType": "Premium_LRS",
+      "osdiskname": "CCTE-OSDisk",
+          "sourceSnapshotResourceId": "/subscriptions/2a6138c3-63dc-4dc8-8c98-2de1fc386897/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/snapshots/ccte-r81.10-1TB-v5-westus2-beforesysprep"
+    },
+    "resources": [
+      {
+        "apiVersion": "2016-09-01",
+        "name": "pid-e843308b-3ce2-42a2-b743-2f21b36a5e68",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "Incremental",
+          "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Compute/disks",
+        "apiVersion": "2022-07-02",
+        "name": "[variables('osdiskname')]",
+        "location": "westus2",
+        "sku": {
+            "name": "Premium_LRS",
+            "tier": "Premium"
+        },
+        "properties": {
+            "osType": "Windows",
+            "creationData": {
+                "createOption": "Copy",
+                "sourceResourceId": "[variables('sourceSnapshotResourceId')]"
+            },
+            "diskSizeGB": 1024,
+            "diskIOPSReadWrite": 7500,
+            "diskMBpsReadWrite": 250,
+            "encryption": {
+                "type": "EncryptionAtRestWithPlatformKey"
+            },
+            "networkAccessPolicy": "AllowAll",
+            "publicNetworkAccess": "Enabled",
+            "dataAccessAuthMode": "None",
+            "diskState": "Reserved",
+            "tier": "P40"
+        }
+    },
+      {
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[variables('virtualNetworkName')]",
+        "apiVersion": "2017-08-01",
+        "location": "[variables('location')]",
+        "tags": {},
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[variables('subnetName')]",
+              "properties": {
+                "addressPrefix": "10.0.2.0/24"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkSecurityGroups",
+        "name": "[variables('networkSecurityGroupName')]",
+        "apiVersion": "2017-06-01",
+        "location": "[variables('location')]",
+        "tags": {},
+        "properties": {
+          "securityRules": [
+            {
+              "name": "default-allow-rdp",
+              "properties": {
+                "priority": 1000,
+                "protocol": "TCP",
+                "access": "Allow",
+                "direction": "Inbound",
+                "sourceAddressPrefix": "*",
+                "sourcePortRange": "*",
+                "destinationAddressPrefix": "*",
+                "destinationPortRange": "*"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "Microsoft.Network/publicIPAddresses",
+        "name": "[variables('publicIpAddressName')]",
+        "apiVersion": "2018-01-01",
+        "location": "[variables('location')]",
+        "tags": {},
+        "properties": {
+          "publicIPAllocationMethod": "Dynamic",
+          "dnsSettings": {
+            "domainNameLabel": "[concat(variables('publicIpAddressDNSName'))]"
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "name": "[variables('networkInterfaceName')]",
+        "apiVersion": "2016-09-01",
+        "location": "[variables('location')]",
+        "tags": {},
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "CCTE-VM-PIP",
+              "properties": {
+                "privateIPAllocationMethod": "Dynamic",
+                "subnet": {
+                  "id": "[variables('subnetRef')]"
+                },
+                "publicIPAddress": {
+                  "id": "[resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                }
+              }
+            }
+          ],
+          "networkSecurityGroup": {
+            "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+          }
+        },
+        "dependsOn": [
+          "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+          "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
+          "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]"
+        ]
+      },
+      {
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[variables('virtualMachineName')]",
+        "apiVersion": "2018-06-01",
+        "location": "[variables('location')]",
+        "tags": {},
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[variables('virtualMachineSize')]"
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+              }
+            ]
+          },
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "Attach",
+              "osType": "Windows",
+              "managedDisk": {
+                "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/',resourceGroup().Name,'/providers/Microsoft.Compute/disks/CCTE-OSDisk')]"
+              }
+            }
+          }
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Compute/disks/', variables('osdiskname'))]",
+          "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
+        ]
+      },
+    {
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "apiVersion": "2015-06-15",
+          "name": "[concat(variables('virtualMachineName'),'/', 'winExtension')]",
+          "location": "[variables('location')]",
+          "dependsOn": [
+          "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+          ],
+          "tags": {
+          "displayName": "VM Extension"
+          },
+          "properties": {
+          "publisher": "Microsoft.Compute",
+          "type": "CustomScriptExtension",
+          "typeHandlerVersion": "1.8",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+          "fileUris": [
+                  "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1",
+          "https://cloudlabsai.blob.core.windows.net/ccsatemp1/cloudshadow1.ps1"
+          ]
+          },
+          "protectedSettings": {
+          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File cloudshadow1.ps1', variables('Enable-CloudLabsEmbeddedShadow'))]"
+          }
+          }
+          }  
+    ],
+    "outputs": {
+      "CCTE Host DNS Name": {
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]",
+        "type": "string"
+      },
+      "CCTE Host admin Username": {
+        "type": "string",
+        "value": "admin"
+      },
+      "CCTE Host admin Password": {
+        "type": "string",
+        "value": "Chkp!234"
+      }
+    }
+  }
