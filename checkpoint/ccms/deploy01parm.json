@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "DID": {
+      "value": "GET-DEPLOYMENT-ID"
+    },
+    "disksize": {
+      "value": "1024"
+    },
+    "imgid": {
+      "value": "/subscriptions/2a6138c3-63dc-4dc8-8c98-2de1fc386897/resourceGroups/cloudlabs-mgmg-rg/providers/Microsoft.Compute/galleries/check_point_certification_labs_gallery/images/ccte-r81.10/versions/1.0.0"
+    }
+  }
+}
