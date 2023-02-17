@@ -56,7 +56,7 @@
                     "createOption": "Copy",
                     "sourceResourceId": "[variables('sourceSnapshotResourceId')]"
                 },
-                "diskSizeGB": 512,
+                "diskSizeGB": 1024,
                 "diskIOPSReadWrite": 7500,
                 "diskMBpsReadWrite": 250,
                 "encryption": {
