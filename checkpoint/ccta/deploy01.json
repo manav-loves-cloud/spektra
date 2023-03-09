@@ -30,8 +30,7 @@
     "subnetName": "default",
     "location": "[resourceGroup().location]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
-    "accountType": "Premium_LRS",
-    "sourceSnapshotResourceId": "/subscriptions/2a6138c3-63dc-4dc8-8c98-2de1fc386897/resourceGroups/aec-mgmt-rg/providers/Microsoft.Compute/snapshots/ccta-r81.10-512GB-v5-westus2-beforesysprep"
+    "accountType": "Premium_LRS"
   },
   "resources": [
     {
