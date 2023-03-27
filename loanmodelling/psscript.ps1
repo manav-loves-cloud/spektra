@@ -135,6 +135,22 @@ $id =$servicePrincipal.id
 New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
 
 
+Connect-AzureAD -Credential $cred | Out-Null
+
+$workspacename= "loanmodel"+$DeploymentID
+
+$id1 = Get-AzureADUser -ObjectId $AzureUserName
+$id1=$id1.ObjectId
+$id = (Get-AzADServicePrincipal -DisplayName $WorkspaceName).id
+
+$id3 = $AzureUserName
+New-AzRoleAssignment -SignInName $id3 -RoleDefinitionName "contributor" -Scope "/subscriptions/$SubscriptionId/resourceGroups/$rgName/providers/Microsoft.Synapse/workspaces/$workspacename"
+#Role assignment on synapse workspace for AAD group
+New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -ObjectId $id1
+New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -ObjectId $id1
+New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -ObjectId $id1
+
+
 
 
 
