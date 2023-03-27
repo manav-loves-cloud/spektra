@@ -240,6 +240,21 @@
       }
     },
     {
+      "type": "Microsoft.MachineLearningServices/workspaces/providers/roleAssignments",
+      "apiVersion": "2020-04-01-preview",
+      "name": "[concat(variables('amlWorkspaceName'), '/Microsoft.Authorization/', guid(concat(resourceGroup().id), resourceId('Microsoft.Authorization/roleDefinitions', variables('contributorRoleID'))))]",
+      "location": "[variables('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Synapse/workspaces/', variables('workspaceName'))]",
+        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('amlWorkspaceName'))]"
+      ],
+      "properties": {
+        "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('contributorRoleID'))]",
+        "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', variables('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
+        "principalType": "ServicePrincipal"
+      }
+    },
+    {
       "type": "Microsoft.Synapse/workspaces/bigDataPools",
       "apiVersion": "2019-06-01-preview",
       "name": "[concat(variables('workspaceName'), '/', variables('sparkComputeName'))]",
