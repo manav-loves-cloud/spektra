@@ -82,7 +82,9 @@
     "subnetName": "default",
     "location": "[resourceGroup().location]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/',variables('virtualNetworkName'), variables('subnetName'))]",
-    "storageBlobDataContributorRoleID": "ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+    "storageBlobDataContributorRoleID": "ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "contributorRoleID": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+    
     
   },
   "resources": [
@@ -242,11 +244,11 @@
     {
       "type": "Microsoft.MachineLearningServices/workspaces/providers/roleAssignments",
       "apiVersion": "2020-04-01-preview",
-      "name": "[concat(variables('amlWorkspaceName'), '/Microsoft.Authorization/', guid(concat(resourceGroup().id), resourceId('Microsoft.Authorization/roleDefinitions', variables('contributorRoleID'))))]",
+      "name": "[concat(variables('WorkspaceName'), '/Microsoft.Authorization/', guid(concat(resourceGroup().id), resourceId('Microsoft.Authorization/roleDefinitions', variables('contributorRoleID'))))]",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Synapse/workspaces/', variables('workspaceName'))]",
-        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('amlWorkspaceName'))]"
+        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('WorkspaceName'))]"
       ],
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('contributorRoleID'))]",
