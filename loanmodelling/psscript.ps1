@@ -135,6 +135,9 @@ $id =$servicePrincipal.id
 New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
 
 
+#Assigning synapse adminstrator role to synapse workspace
+Install-Module AzureAD -Force
+
 Connect-AzureAD -Credential $cred | Out-Null
 
 $workspacename= "loanmodel"+$DeploymentID
