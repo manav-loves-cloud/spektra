@@ -131,9 +131,10 @@ $machinelearningaccountname=$machinelearningname.name
 $servicePrincipalDisplayName = "https://odl_user_sp_$DeploymentID"
 $servicePrincipal = Get-AzADServicePrincipal -DisplayName $servicePrincipalDisplayName
 $id =$servicePrincipal.id
+$saName="$saName"+$DeploymentID
 
 New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
-
+New-AzRoleAssignment -SignInName $AzureUserName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$saName"
 
 #Assigning synapse adminstrator role to synapse workspace
 Install-Module AzureAD -Force
@@ -153,10 +154,9 @@ New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "6e4
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -ObjectId $id1
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -ObjectId $id1
 
-$saName="$saName"+$DeploymentID
 
-New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$saName" -ErrorAction SilentlyContinue;
-New-AzRoleAssignment -SignInName $AzureUserName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$saName" -ErrorAction SilentlyContinue;
+
+
 
 
 
