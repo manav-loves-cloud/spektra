@@ -131,7 +131,7 @@ $machinelearningaccountname=$machinelearningname.name
 $servicePrincipalDisplayName = "https://odl_user_sp_$DeploymentID"
 $servicePrincipal = Get-AzADServicePrincipal -DisplayName $servicePrincipalDisplayName
 $id =$servicePrincipal.id
-$saName="$saName"+$DeploymentID
+$saName="asadatalake"+$DeploymentID
 
 New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
 New-AzRoleAssignment -SignInName $AzureUserName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$saName"
