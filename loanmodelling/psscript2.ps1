@@ -162,6 +162,8 @@ New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "6e4
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -ObjectId $id1
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -ObjectId $id1
 
+Start-Sleep 100
+
 #downloading synapse pipelines
 
 $WebClient = New-Object System.Net.WebClient
@@ -191,9 +193,13 @@ $connectionstring2=$connection2.ConnectionString
 (Get-Content -Path "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\loandemo_datalake.json") | ForEach-Object {$_ -Replace '<connectionstring2>', $connectionstring2} | Set-Content -Path "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\loandemo_datalake.json"
 (Get-Content -Path "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\loandemo_datalake.json") | ForEach-Object {$_ -Replace 'DID', $DeploymentID} | Set-Content -Path "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\loandemo_datalake.json"
 
+sleep 10
+
 #Running the synapse1 pipline
 Set-AzSynapseLinkedService -WorkspaceName $WorkspaceName -Name link_to_sbadata_storage -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\link_to_sbadata_storage.json"
 Set-AzSynapseLinkedService -WorkspaceName $WorkspaceName -Name loandemo_datalake -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\linkedService\loandemo_datalake.json"
+
+sleep 10
 
 Set-AzSynapseDataset -WorkspaceName $WorkspaceName  -Name SBA_Raw_Data -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\dataset\SBA_Raw_Data.json"
 Set-AzSynapseDataset -WorkspaceName $WorkspaceName  -Name SBA_input_data -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\dataset\SBA_input_data.json"
@@ -201,11 +207,18 @@ Set-AzSynapseDataset -WorkspaceName $WorkspaceName  -Name NAICS_data -Definition
 Set-AzSynapseDataset -WorkspaceName $WorkspaceName  -Name LoanRawData -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\dataset\LoanRawData.json"
 Set-AzSynapseDataset -WorkspaceName $WorkspaceName  -Name LoanCuratedData -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\dataset\LoanCuratedData.json"
 
+sleep 10
 
 Set-AzSynapseDataFlow -WorkspaceName $WorkspaceName -Name Clean_Loan_Raw_Data -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\dataflow\Clean_Loan_Raw_Data.json"
 
+sleep 10
+
 Set-AzSynapsePipeline -WorkspaceName $WorkspaceName -Name Clean_Raw_Data -DefinitionFile "C:\LabFiles\Clean_Raw_Data_support_live\pipeline\Clean_Raw_Data.json"
+
+sleep 10
 
 $HeadersInfo = Invoke-AzSynapsePipeline -WorkspaceName $WorkspaceName -PipelineName "Clean_Raw_Data"
 $HeadersInfo
 $HeadersRunID=$HeadersInfo.RunId
+
+sleep 10
