@@ -146,8 +146,10 @@ Connect-AzureAD -Credential $cred | Out-Null
 $id1 = Get-AzureADUser -ObjectId $AzureUserName
 $id1=$id1.ObjectId
 $id = (Get-AzADServicePrincipal -DisplayName $WorkspaceName).id
+$id=$id.get(1)
 
 $id3 = $AzureUserName
+New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$RGName/providers/Microsoft.Storage/storageAccounts/$saName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -ObjectID $id -RoleDefinitionName "contributor" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.MachineLearningServices/workspaces/$machinelearningaccountname"
 New-AzRoleAssignment -SignInName $AzureUserName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Storage/storageAccounts/$saName"
 New-AzRoleAssignment -SignInName $id3 -RoleDefinitionName "contributor" -Scope "/subscriptions/$SubscriptionId/resourceGroups/$rgName/providers/Microsoft.Synapse/workspaces/$workspacename"
