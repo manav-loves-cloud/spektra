@@ -154,11 +154,20 @@ New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "6e4
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -ObjectId $id1
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -ObjectId $id1
 
-
-
-
-
-
+#downloading synapse pipelines
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/Clean_Raw_Data_support_live.zip","C:\LabFiles\Clean_Raw_Data_support_live.zip")
+#unziping folder
+function Expand-ZIPFile($file, $destination)
+{
+$shell = new-object -com shell.application
+$zip = $shell.NameSpace($file)
+foreach($item in $zip.items())
+{
+$shell.Namespace($destination).copyhere($item)
+}
+}
+Expand-ZIPFile -File "C:\LabFiles\Clean_Raw_Data_support_live.zip" -Destination "C:\LabFiles\"
 
 
 
