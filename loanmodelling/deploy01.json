@@ -426,7 +426,7 @@
         "settings": {
           "fileUris": [
             "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1",
-            "https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/psscript1.ps1"
+            "https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/psscript.ps1"
           ],
           "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File psscript1.ps1', variables('cloudlabsCommon'))]"
         }
