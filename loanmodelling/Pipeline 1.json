@@ -3,7 +3,7 @@
     "properties": {
         "activities": [
             {
-                "name": "Notebook 1",
+                "name": "Notebook1",
                 "type": "SynapseNotebook",
                 "dependsOn": [],
                 "policy": {
@@ -16,7 +16,7 @@
                 "userProperties": [],
                 "typeProperties": {
                     "notebook": {
-                        "referenceName": "Notebook 1",
+                        "referenceName": "Notebook1",
                         "type": "NotebookReference"
                     },
                      "sparkPool": {
