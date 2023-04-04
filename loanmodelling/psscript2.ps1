@@ -162,7 +162,7 @@ New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "6e4
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -ObjectId $id1
 New-AzSynapseRoleAssignment -WorkspaceName $workspacename -RoleDefinitionId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -ObjectId $id1
 
-Start-Sleep 100
+Start-Sleep 200
 
 #downloading synapse pipelines
 
