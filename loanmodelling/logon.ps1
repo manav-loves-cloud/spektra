@@ -63,3 +63,31 @@ Set-AzSynapsePipeline -WorkspaceName $workspacename -Name pipeline1 -DefinitionF
 Invoke-AzSynapsePipeline -WorkspaceName $workspacename -PipelineName pipeline1
 
 sleep 600
+az login -u $AzureUserName -p $AzurePassword
+az extension add --name azure-cli-ml
+
+Retrieve Storage Account Key
+$workspacename= "loanmodel"+$DeploymentID
+$rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
+$storageAccounts = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Storage/storageAccounts"
+$storageName = $storageAccounts | Where-Object { $_.Name -like 'sba*' }
+$storageaccountname = $storageName.Name
+$storageaccountkey = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storageaccountname
+$storageaccountkey1 = $storageaccountkey.Value[0]
+
+#Download yml file for ML-Datastore
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/blobstore.yml", "C:\LabFiles\blobstore.yml")
+
+#Replace variables in yml file
+
+(Get-Content -Path "C:\LabFiles\blobstore.yml") | ForEach-Object {$_ -Replace "mytestblobstore", $storageaccountname} | Set-Content -Path "C:\LabFiles\blobstore.yml"
+(Get-Content -Path "C:\LabFiles\blobstore.yml") | ForEach-Object {$_ -Replace 'data-container','output' } | Set-Content -Path "C:\LabFiles\blobstore.yml"
+(Get-Content -Path "C:\LabFiles\blobstore.yml") | ForEach-Object {$_ -Replace 'enter_accountkey', $storageaccountkey1} | Set-Content -Path "C:\LabFiles\blobstore.yml"
+
+az extension add -n ml -y
+az extension remove -n azure-cli-ml
+
+az ml datastore create --file "C:\LabFiles\blobstore.yml" --resource-group $rgname --workspace-name $workspacename
+
+sleep 60
