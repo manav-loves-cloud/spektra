@@ -63,10 +63,14 @@ Set-AzSynapsePipeline -WorkspaceName $workspacename -Name pipeline1 -DefinitionF
 Invoke-AzSynapsePipeline -WorkspaceName $workspacename -PipelineName pipeline1
 
 sleep 600
+#Creation of Datastore in ML
+
+
 az login -u $AzureUserName -p $AzurePassword
 az extension add --name azure-cli-ml
 
-Retrieve Storage Account Key
+#Retrieve Storage Account Key
+
 $workspacename= "loanmodel"+$DeploymentID
 $rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
 $storageAccounts = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Storage/storageAccounts"
