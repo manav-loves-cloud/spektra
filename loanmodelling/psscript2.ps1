@@ -37,6 +37,10 @@ WindowsServerCommon
 InstallCloudLabsShadow $ODLID $InstallCloudLabsShadow
 CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID
 
+#Install Azure-CLI
+
+choco install azure-cli -y -force
+
 #Download power Bi desktop
 
 $WebClient = New-Object System.Net.WebClient
