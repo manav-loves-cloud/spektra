@@ -111,7 +111,7 @@ foreach($item in $zip.items())
 $shell.Namespace($destination).copyhere($item)
 }
 }
-Expand-ZIPFile -File "C:\LabFiles\Clean_Raw_Data_support_live.zip" -Destination "C:\LabFiles\"
+Expand-ZIPFile -File "C:\LabFiles\local-mltable.zip" -Destination "C:\LabFiles\"
 
 $WebClient = New-Object System.Net.WebClient\
 $WebClient.DownloadFile("https://sbadata$DeploymentID.blob.core.windows.net/output/part-merged.csv", "C:\LabFiles\local-mltable\part-merged.csv")
