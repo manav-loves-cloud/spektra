@@ -95,3 +95,27 @@ az extension remove -n azure-cli-ml
 az ml datastore create --file "C:\LabFiles\blobstore.yml" --resource-group $rgname --workspace-name $workspacename
 
 sleep 60
+
+#Creating the dataassets
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/dataasset.yml", "C:\LabFiles\dataasset.yml")
+
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/local-mltable.zip","C:\LabFiles\local-mltable.zip")
+#unziping folder
+function Expand-ZIPFile($file, $destination)
+{
+$shell = new-object -com shell.application
+$zip = $shell.NameSpace($file)
+foreach($item in $zip.items())
+{
+$shell.Namespace($destination).copyhere($item)
+}
+}
+Expand-ZIPFile -File "C:\LabFiles\Clean_Raw_Data_support_live.zip" -Destination "C:\LabFiles\"
+
+$WebClient = New-Object System.Net.WebClient\
+$WebClient.DownloadFile("https://sbadata$DeploymentID.blob.core.windows.net/output/part-merged.csv", "C:\LabFiles\local-mltable\part-merged.csv")
+
+az ml data create -f dataasset.yml --resource-group $rgname --workspace-name $workspacename
+
+Sleep 60
