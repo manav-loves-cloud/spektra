@@ -21,4 +21,4 @@ datastore_paths = [(datastore, 'part-merged.csv')]
 
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 
-weather_ds.register(ws,'sbadatset123')
+weather_ds.register(ws,'SBADATA')
