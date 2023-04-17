@@ -97,25 +97,27 @@ az ml datastore create --file "C:\LabFiles\blobstore.yml" --resource-group $rgna
 sleep 60
 
 #Creating the dataassets
+python -m pip install --upgrade pip
+pip install azureml-dataset-runtime
+pip install	azureml-core
+pip install	azureml-dataprep
+pip install azure-identity
+pip install azure-cli
+
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/dataasset.yml", "C:\LabFiles\dataasset.yml")
 
-$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/local-mltable.zip","C:\LabFiles\local-mltable.zip")
-#unziping folder
-function Expand-ZIPFile($file, $destination)
-{
-$shell = new-object -com shell.application
-$zip = $shell.NameSpace($file)
-foreach($item in $zip.items())
-{
-$shell.Namespace($destination).copyhere($item)
-}
-}
-Expand-ZIPFile -File "C:\LabFiles\local-mltable.zip" -Destination "C:\LabFiles\"
 
-$WebClient = New-Object System.Net.WebClient\
-$WebClient.DownloadFile("https://sbadata$DeploymentID.blob.core.windows.net/output/part-merged.csv", "C:\LabFiles\local-mltable\part-merged.csv")
 
-az ml data create -f dataasset.yml --resource-group $rgname --workspace-name $workspacename
+$WebClient.DownloadFile("https://aka.ms/vs/17/release/vc_redist.x64.exe","C:\LabFiles\VCredist.exe")
+Start-Process -FilePath "C:\LabFiles\VCredist.exe" -ArgumentList '-quiet','ACCEPT_EULA=1'
+
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/scriptfinal.py", "C:\LabFiles\scriptfinal.py")
+
+(Get-Content -Path "C:\LabFiles\scriptfinal.py") | ForEach-Object {$_ -Replace "abc", "$workspacename"} | Set-Content -Path "C:\LabFiles\scriptfinal.py"
+(Get-Content -Path "C:\LabFiles\scriptfinal.py") | ForEach-Object {$_ -Replace "def", "$SubscriptionId"} | Set-Content -Path "C:\LabFiles\scriptfinal.py"
+(Get-Content -Path "C:\LabFiles\scriptfinal.py") | ForEach-Object {$_ -Replace "hij", "$rgname"} | Set-Content -Path "C:\LabFiles\scriptfinal.py"
+
+python scriptfinal.py
 
 Sleep 60
