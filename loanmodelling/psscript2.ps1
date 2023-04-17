@@ -49,7 +49,9 @@ $WebClient = New-Object System.Net.WebClient
 
 $WebClient.DownloadFile("https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe","C:\LabFiles\PBIDesktop_x64.exe")
 
+#Install Python
 
+choco install python --version=3.8.0
 
 #INstall power Bi desktop
 
