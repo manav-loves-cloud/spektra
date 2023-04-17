@@ -7,7 +7,7 @@ from azureml.core.authentication import AzureCliAuthentication
 cli_auth = AzureCliAuthentication()
 
 
-ws =  Workspace.get(name = "loanmodel913837", subscription_id = '35af589a-ac6f-43a2-af98-6b8a1684f1f3', resource_group = 'ODL-manymodels-913837', auth = cli_auth)
+ws =  Workspace.get(name = "abc", subscription_id = 'def', resource_group = 'hij', auth = cli_auth)
 
 
 datastore_name = 'sbadata'
