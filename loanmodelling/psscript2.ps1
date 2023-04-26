@@ -186,6 +186,10 @@ $shell.Namespace($destination).copyhere($item)
 }
 Expand-ZIPFile -File "C:\LabFiles\Clean_Raw_Data_support_live.zip" -Destination "C:\LabFiles\"
 
+#Dowloading the pbit file
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/RCLM%20-%20SBA%20Loan%20Data%20Analysis.pbit","C:\LabFiles\RCLM_file.pbit")
+
 #Extracting the connection string
 
 $connection1= (Get-AzStorageAccount -ResourceGroupName $rgname -Name $saaName).Context
