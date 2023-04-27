@@ -382,21 +382,6 @@
       }
     },
     {
-      "type": "Microsoft.MachineLearningServices/workspaces/computes",
-      "name": "[concat(variables('workspaceName'), '/', variables('amlciName'))]",
-      "apiVersion": "2021-07-01",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.MachineLearningServices/workspaces', variables('workspaceName'))]"
-      ],
-      "properties": {
-        "computeType": "ComputeInstance",
-        "properties": {
-          "vmSize": "[variables('computevmsize')]"
-        }
-      }
-    },
-    {
       "name": "[variables('vmName')]",
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-03-01",
