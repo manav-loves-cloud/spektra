@@ -128,6 +128,6 @@ Sleep 60
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/computeinstance.yml", "C:\LabFiles\computeinstance.yml")
 
-az ml compute create -f computeinstance.yml
+az ml compute create --file computeinstance.yml --resource-group $rgName --workspace-name $workspacename
 
 Sleep 20
