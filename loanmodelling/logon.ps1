@@ -121,3 +121,13 @@ $WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/
 python scriptfinal.py
 
 Sleep 60
+
+
+#Create the compute Instance
+
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/computeinstance.yml", "C:\LabFiles\computeinstance.yml")
+
+az ml compute create -f computeinstance.yml
+
+Sleep 20
