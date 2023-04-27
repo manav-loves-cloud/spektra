@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/computeInstance.schema.json 
+name: loanmodel
+type: computeinstance
+size: STANDARD_D12_v2
