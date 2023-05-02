@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "RiskClassification",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Udacity/main/Icybersecurity/icybersecurity.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Risk-Classification-and-Loan-Modeling/main/labguide.md",
+        "Order": 2
+      }
+
+
+    ]
+  }
+]
