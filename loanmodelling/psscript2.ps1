@@ -126,6 +126,27 @@ $destUrl
 
 C:\LabFiles\azcopy.exe copy $srcUrl $destUrl --recursive
 
+#storage copy for test.csv
+$srcUrl = $null
+$rgLocation = (Get-AzResourceGroup -Name $rgName).Location
+          
+
+$srcUrl = "https://experienceazure.blob.core.windows.net/testinput?sp=racwdli&st=2023-05-03T07:15:03Z&se=2025-09-18T15:15:03Z&spr=https&sv=2021-12-02&sr=c&sig=679myUvhPgE4i31KdFYWJpdnNxYhILRueWYl3%2FQ8Gkk%3D"
+
+$destContext = $storage.Context           
+$resources = $null
+
+
+$startTime = Get-Date
+$endTime = $startTime.AddDays(2)
+$destSASToken = New-AzStorageContainerSASToken  -Context $destContext -Container "testinput" -Permission rwd -StartTime $startTime -ExpiryTime $endTime
+$destUrl = $destContext.BlobEndPoint + "testinput" + $destSASToken
+
+$srcUrl 
+$destUrl
+
+C:\LabFiles\azcopy.exe copy $srcUrl $destUrl --recursive
+
 
 #Assign contributor role for the Service Principal on the Machine Learning workspace
 $rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
