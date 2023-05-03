@@ -147,6 +147,12 @@ $destUrl
 
 C:\LabFiles\azcopy.exe copy $srcUrl $destUrl --recursive
 
+#donwnload test2.csv file
+
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://raw.githubusercontent.com/bhavangowdan/spektra/main/loanmodelling/test2.csv","C:\LabFiles\test2.csv")
+
+
 
 #Assign contributor role for the Service Principal on the Machine Learning workspace
 $rgName = (Get-AzResourceGroup | Where-Object { $_.ResourceGroupName -like "ODL*" }).ResourceGroupName
