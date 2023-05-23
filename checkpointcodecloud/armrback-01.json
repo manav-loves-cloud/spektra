@@ -1,0 +1,27 @@
+{
+  "Name": "CCVSA lab RBAC",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Azure CCVSA Lab RBAC",
+  "Actions": [
+    "Microsoft.Authorization/*",
+    "Microsoft.Compute/disks/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Network/networkInterfaces/*",
+    "Microsoft.Network/networkSecurityGroups/*",
+    "Microsoft.Network/routeTables/*",
+    "Microsoft.Network/virtualNetworks/*",
+    "Microsoft.Network/publicIPAddresses/*",
+    "Microsoft.Resources/*",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Storage/storageAccounts/*",
+    "Microsoft.Compute/availabilitySets/*",
+    "Microsoft.Network/loadBalancers/*",
+    "Microsoft.Resources/deployments/*",
+    "Microsoft.Insights/autoscalesettings/*",
+    "Microsoft.Compute/virtualMachineScaleSets/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": []
+}
