@@ -1,0 +1,131 @@
+{
+	 "if": {
+	    "anyOf": [
+		 {
+			"not": {
+			  "anyOf": [
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Compute/disks/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Compute/virtualMachines/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/networkInterfaces/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/networkSecurityGroups/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/publicIPAddresses/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/routeTables/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/virtualHubs/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/virtualNetworks/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Network/virtualWans/*"
+				    },
+                    {
+				    "field": "type",
+				    "like": "Microsoft.Storage/storageAccounts/*"
+				    },
+					{
+						"field": "type",
+						"like": "Microsoft.Compute/sshPublicKeys/*"
+					},
+					{
+						"field": "type",
+						"like": "Microsoft.Solutions/applications/*"
+					},
+                    {
+				    "field": "type",
+				    "in": ["Microsoft.Compute/sshPublicKeys","Microsoft.Solutions/applications","Microsoft.Compute/disks", "Microsoft.Compute/virtualMachines", "Microsoft.Network/networkInterfaces", "Microsoft.Network/networkSecurityGroups", "Microsoft.Network/publicIPAddresses", "Microsoft.Network/routeTables", "Microsoft.Network/virtualHubs", "Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualWans", "Microsoft.Storage/storageAccounts"]
+				    }
+                ]
+			}
+		 },
+          {
+		  "allof": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.Compute/disks"
+			},
+			{
+			  "not": {
+				"field": "Microsoft.Compute/disks/Sku.Tier",
+				"in": ["Standard"]
+				}
+			  }
+			]
+		  },
+          {
+		  "allOf": [
+			{
+			  "field": "type",
+			  "equals": "Microsoft.Compute/virtualMachines"
+			},
+			{
+			  "not": {
+				"allOf": [
+				  {
+                    "field": "Microsoft.Compute/virtualMachines/imageOffer",
+					"in": ["apache_ubuntu20-04", "check-point-cg-r8120"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/imagePublisher",
+					"in": ["checkpoint", "cloud-infrastructure-services"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/imageSku",
+					 "in": ["apache-ubuntu20-04", "mgmt-byol", "sg-byol"]
+				  },
+				  {
+					"field": "Microsoft.Compute/virtualMachines/sku.name",
+					"in": ["Standard_B1s", "Standard_D3_v2"]
+				  }
+				]
+			  }
+			}
+		   ]
+		},
+            {
+			"allOf": [
+			  {
+				"source": "action",
+				"equals": "Microsoft.Storage/storageAccounts/write"
+			  },
+			  {
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			  },
+			  {
+				"not": 
+				  {
+					"field": "Microsoft.Storage/storageAccounts/sku.name",
+					"in": ["StandardLRS"]
+				  }
+			   }
+			]
+		  },
+
+	  ]
+	},
+	"then": {
+	  "effect": "deny"
+	}
+}
