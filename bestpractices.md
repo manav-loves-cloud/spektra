@@ -1,9 +1,20 @@
 # Best Practices for Azure Templates
 ## 1. Naming Conventions for the Templates
-   While adding the template name we need to ensure that we are following the best practice like which Cource/lab and other parmeters which is easy to identify the template.
+   While adding the template name we need to ensure that we are following the best practice like which Course/lab and other parmeters which is easy to identify the template.
+
+
  
 
    ![](./images/bst1.png)
+
+## 2. Naming Conventions for the ODL
+
+   * ODL Name: Give a preferred name for your ODL that will help you to identify the labs in the listed ODLs. **For example: While naming the On Demand Lab, use the following pattern (Lab_Name + Venue Location + Date). This way you can quickly identify the ODLs at ease and will reduce confusion.**
+
+## 3. Naming Conventions for the Course
+   
+   * Course Name: Course is basically combination of multiple learning components such as a labs, Knowledge Assessments, Videos, Documents. So give the name that which is easy to identify.
+
 
 
 ## 2. CloudLabs Parameter
