@@ -4,7 +4,7 @@
 
 ### A. Naming Conventions for the Templates
    
-   * While adding the template name we need to ensure that we are following the best practice like which Course/lab and other parmeters which is easy to identify the template.
+   * While adding the template name we need to ensure that we are following the best practice like which Course/lab and other parmeters which is easy to identify the template..
    
      ![](./images/bst1.png)
 
