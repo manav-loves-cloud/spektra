@@ -58,11 +58,11 @@ below are some of the cloudlabs parameter that can be used.
 
  ![](./images/bst4.png)
 
-4. **Concatenating Deployment ID in resources**
+## 4. Concatenating Deployment ID in resources.
   
-    As a standard practice when we define any resources in the CloudLabs Template we need to concatenate the deployment ID with a resource. The deployment ID (DID) is a unique identification for each deployment that gets assigned to a user. For an example if we want to define a VM in the CloudLabs Template or in the ARM/CFT Template we would name it as- VM Name: VM-{GET-DEPLOYMENT-ID}, let's suppose the DID is 1009234 then the VM name would appear as VM-1009234. This helps us to uniquely identify the resource & perform any troubleshooting in-case we face any issues.
+As a standard practice when we define any resources in the CloudLabs Template we need to concatenate the deployment ID with a resource. The deployment ID (DID) is a unique identification for each deployment that gets assigned to a user. For an example if we want to define a VM in the CloudLabs Template or in the ARM/CFT Template we would name it as- VM Name: VM-{GET-DEPLOYMENT-ID}, let's suppose the DID is 1009234 then the VM name would appear as VM-1009234. This helps us to uniquely identify the resource & perform any troubleshooting in-case we face any issues.
 
-    In AWS as well while naming the resources in a CloudFormation Template we can associate the DID with the resource which helps us in identifying the resource, here is an example:
+In AWS as well while naming the resources in a CloudFormation Template we can associate the DID with the resource which helps us in identifying the resource, here is an example:
 
             "S3Bucket": {
             "Type": "AWS::S3::Bucket",
@@ -81,9 +81,9 @@ below are some of the cloudlabs parameter that can be used.
             }
         }
 
-5. **CloudLabs Supported File Format**
+## 5. CloudLabs Supported File Format
   
-    In CloudLabs the supported file format is JSON(Java Script Object Notation), below given are the resources where it is applicable:
+In CloudLabs the supported file format is JSON(Java Script Object Notation), below given are the resources where it is applicable:
 
 * **Azure Resource Manager/ Cloud Formation Template:** ARM/CFT template are an IAAC (Infrastructure-As-A-Code) deployment tools where we can pre-create a set of resources & provide it to the users.
    
@@ -132,17 +132,17 @@ below are some of the cloudlabs parameter that can be used.
 For a detailed explanation on adding an AWS Template follow this link **[Adding An AWS Template](https://dev-cl-docs.azurewebsites.net/LabDeveloper/AddingAWSTemplate)**
 
 
-4. **Adding Course Catalog**
+## 6. Adding Course Catalog
 
-     Adding courses is a part of setting up course catalog. CloudLabs course is a collection of ODL packages in a proper flow, so you must create the required templates and ODLs for your labs, assessments, and videos prior to creating the course. While we create a configuration for the course following points are to be followed:
+Adding courses is a part of setting up course catalog. CloudLabs course is a collection of ODL packages in a proper flow, so you must create the required templates and ODLs for your labs, assessments, and videos prior to creating the course. While we create a configuration for the course following points are to be followed:
      
-     * type: While setting up the course we must clearly state the type of the component whether it is a **learning path, lab, lecture, document, or a practice test**.
+   * type: While setting up the course we must clearly state the type of the component whether it is a **learning path, lab, lecture, document, or a practice test**.
      
-     * number of children: If there are any sub-components of a course & module then we need to specify the number of count.
+   * number of children: If there are any sub-components of a course & module then we need to specify the number of count.
 
-     * clid: This is the unique On-Demand Lab (ODL) ID with which you want to associate with the course. To elaborate if we have multiple modules under a course, then we would to set-up different ODL's for each module, where we would have different clid corresponding to each ODL & that ID must be specified when we are configuring modules for a course.
+   * clid: This is the unique On-Demand Lab (ODL) ID with which you want to associate with the course. To elaborate if we have multiple modules under a course, then we would to set-up different ODL's for each module, where we would have different clid corresponding to each ODL & that ID must be specified when we are configuring modules for a course.
 
-     Here is the format for adding a course component:
+   Here is the format for adding a course component:
 
          {
             "uid": "enter-a-uid-for-this-component",  //You can create an ID to uniquely identify this component in course 
