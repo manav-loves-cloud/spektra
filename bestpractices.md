@@ -14,7 +14,7 @@
 
 ### C. Naming Conventions for the Course
 
-   * Course Name: Course is basically combination of multiple learning components such as a labs, Knowledge Assessments, Videos, Documents. So give the name that which is easy to identify.
+   * Course Name: Course is basically combination of multiple learning components such as a labs, Knowledge Assessments, Videos, and Documents. So give the name that which is easy to identify.
 
       (**Note: Course Title will be visible in the Course Tab as below which is will not be visible to users Display Name Which will be visible to users**)
       ![](./images/cg-02.png)
